@@ -1,0 +1,37 @@
+.messageContainer :global {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @media (min-width: 768px) {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+
+    .content-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50vh;
+      width: 100%;
+      margin: 100px 0;
+
+      .message-text {
+        color: inherit;
+        font-size: 16px;
+        text-align: center;
+        font-weight: 500;
+        color: #1a1c1d;
+
+        @media (min-width: 768px) {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+import iconProps from "./types";
+
+const SvgAdd = ({ color }: iconProps) => (
+  <svg
+    width="25"
+    height="24"
+    viewBox="0 0 25 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12.5 4V20"
+      stroke={color ?? "white"}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M4.5 12H20.5"
+      stroke={color ?? "white"}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export default SvgAdd;

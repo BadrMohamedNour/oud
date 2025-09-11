@@ -1,0 +1,76 @@
+.mobileFooter :global {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  bottom: 0;
+  box-shadow: 0px 0px 20px 0px #00000012;
+  background-color: #ffff;
+  padding: 15px 16px;
+
+  li a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+
+    &.active,
+    &:active {
+      & * {
+        color: #f1b11d !important;
+        stroke: #f1b11d !important;
+      }
+    }
+
+    &:hover {
+      background-color: #ffffff;
+    }
+
+    .badge {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      &[data-badge]::after {
+        content: attr(data-badge);
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        color: #ffffff;
+        background-color: #f1b11c;
+        font-size: 12px;
+        font-weight: 500;
+        min-width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2px;
+      }
+    }
+
+    span {
+      font-size: 13px;
+      font-weight: 300;
+      color: #484e51;
+      text-align: center;
+    }
+  }
+
+  @media (min-width: 600px) {
+    padding: 20px 50px;
+  }
+
+  @media (min-width: 900px) {
+    display: none;
+    padding: 20px 60px;
+  }
+}
