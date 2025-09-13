@@ -1,5 +1,5 @@
 .header :global {
-  .main-header {
+  .content {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -11,6 +11,8 @@
     padding-left: 16px;
     height: 85px;
     background-color: #ffffff;
+    padding-top: 16px;
+    padding-bottom: 16px;
 
     .logo {
       a {
@@ -38,11 +40,23 @@
       gap: 0;
 
       .cart {
+        display: none;
+
         @media (min-width: 900px) {
+          display: block;
+
           a {
             height: 48px;
             width: 48px;
           }
+        }
+      }
+
+      .menuBtn {
+        display: block;
+
+        @media (min-width: 900px) {
+          display: none;
         }
       }
 
@@ -66,120 +80,138 @@
       padding-left: 100px;
     }
   }
+
+  .categories {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 25px 20px;
+    background: #fcfcfd;
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    .a {
+      font-family: var(--font-ExpoArabic);
+      border-radius: 8px;
+      font-weight: 300;
+      color: #484e51;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
 
-.drawer :global {
-  top: 85px;
+.mainDrawer :global {
+  top: 85px !important;
 
-  .ant-drawer-body {
-    padding: 0;
-  }
+  .ant-drawer-content-wrapper {
+    box-shadow: none !important;
 
-  .user-info {
-    display: flex;
-    align-items: center;
-    margin: 15px 20px;
-    padding: 15px;
-  }
+    .ant-drawer-body {
+      padding: 0 !important;
 
-  .user-avatar {
-    background-color: #f5d893;
-    width: 54px;
-    height: 54px;
-    font-size: 24px;
-  }
+      .user {
+        .avatar {
+          background-color: #f5d893;
+          width: 54px;
+          height: 54px;
+          font-size: 24px;
 
-  .user-details {
-    max-width: 100%;
-    margin-right: 8px;
-  }
+          .info {
+            max-width: 100%;
+            margin-right: 8px;
 
-  .username {
-    font-weight: 500;
-    font-size: 16px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    direction: ltr;
-  }
+            .username {
+              font-weight: 500;
+              font-size: 16px;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+              direction: ltr;
+            }
 
-  .email {
-    font-weight: 300;
-    font-size: 14px;
-    text-align: end;
-    direction: ltr;
-  }
+            .email {
+              font-weight: 300;
+              font-size: 14px;
+              text-align: end;
+              direction: ltr;
+            }
+          }
+        }
+      }
 
-  .divider {
-    height: 8px;
-    width: 100%;
-    background-color: #f6f7f9;
-  }
+      .divider {
+        height: 8px;
+        width: 100%;
+        background-color: #f6f7f9;
+      }
 
-  .nav-links {
-    display: flex;
-    flex-direction: column;
-    padding: 0 20px;
-    margin-top: 20px;
-    gap: 5px;
-  }
+      .links,
+      .auth {
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px;
+        margin-top: 20px;
+        gap: 5px;
 
-  .nav-button {
-    border: 1px solid #e7eaee;
-    border-radius: 4px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: auto;
+        &:last-of-type {
+          margin-top: 30px;
+        }
 
-    .nav-button-content {
-      display: flex;
-      align-items: center;
-    }
+        a,
+        button {
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border: 1px solid #e7eaee;
+          border-radius: 4px;
+          width: 100%;
+          height: auto;
 
-    .nav-label {
-      font-size: 16px;
-      font-weight: 500;
-      color: #1a1c1d;
-      margin-right: 15px;
-    }
-  }
+          .content {
+            display: flex;
+            align-items: center;
 
-  .other-links {
-    margin-top: 30px;
-  }
+            span {
+              font-size: 16px;
+              font-weight: 500;
+              color: #1a1c1d;
+              margin-right: 15px;
+            }
+          }
 
-  .auth-button {
-    border: 1px solid #e7eaee;
-    border-radius: 4px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+          svg {
+            color: #000;
+          }
+        }
+      }
 
-    .nav-button-content {
-      display: flex;
-      align-items: center;
-    }
+      .auth {
+        .logoutBtn {
+          border: 1px solid #e7eaee;
+          border-radius: 4px;
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
 
-    .auth-label {
-      font-size: 16px;
-      font-weight: 500;
-      color: #484e51;
-      margin-right: 15px;
-    }
-  }
+          .nav-button-content {
+            display: flex;
+            align-items: center;
+          }
 
-  .menu-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-
-    @media (min-width: 768px) {
-      display: none;
+          .auth-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #484e51;
+            margin-right: 15px;
+          }
+        }
+      }
     }
   }
 }

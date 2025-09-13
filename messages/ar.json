@@ -1,0 +1,23 @@
+{
+  "metadata": {},
+  "Common": {},
+  "Header": {},
+  "Footer": {},
+  "Forms": {},
+  "Login": {},
+  "ContactUs": {},
+  "TermsConditions": {},
+  "PrivacyPolicy": {},
+  "Profile": {},
+  "NotFound": {
+    "The requested page does not exist": "الصفحة المطلوبة غير موجودة",
+    "Sorry, the page you requested could not be found Please refer to the home page": "عذرا، لم يتم العثور على الصفحة المطلوبة، يرجى الرجوع إلى الصفحة الرئيسية",
+    "Go To Home": "الصفحة الرئيسية"
+  },
+  "Error": {
+    "Something went wrong": "لقد حدث خطأ ما",
+    "Error Message": "رسالة الخطأ",
+    "Try again": "حاول مرة أخرى",
+    "Go To Home": "الصفحة الرئيسية"
+  }
+}

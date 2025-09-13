@@ -1,0 +1,23 @@
+{
+  "metadata": {},
+  "Common": {},
+  "Header": {},
+  "Footer": {},
+  "Forms": {},
+  "Login": {},
+  "ContactUs": {},
+  "TermsConditions": {},
+  "PrivacyPolicy": {},
+  "Profile": {},
+  "NotFound": {
+    "The requested page does not exist": "The requested page does not exist",
+    "Sorry, the page you requested could not be found Please refer to the home page": "Sorry, the page you requested could not be found Please refer to the home page",
+    "Go To Home": "Go To Home"
+  },
+  "Error": {
+    "Something went wrong": "Something went wrong",
+    "Error Message": "Error Message",
+    "Try again": "Try again",
+    "Go To Home": "Go To Home"
+  }
+}
