@@ -4,11 +4,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #e7eaee;
     padding-top: 18px;
-    padding-right: 16px;
     padding-bottom: 18px;
-    padding-left: 16px;
     height: 85px;
     background-color: #ffffff;
     padding-top: 16px;
@@ -38,6 +35,13 @@
       flex-direction: row;
       align-items: center;
       gap: 0;
+
+      .langDropdown {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+      }
 
       .cart {
         display: none;
@@ -71,13 +75,6 @@
       @media (min-width: 900px) {
         gap: 16px;
       }
-    }
-
-    @media (min-width: 900px) {
-      padding-top: 16px;
-      padding-right: 100px;
-      padding-bottom: 16px;
-      padding-left: 100px;
     }
   }
 

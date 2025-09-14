@@ -28,5 +28,28 @@ button {
 }
 
 .container {
-  padding: 48px 100px 100px;
+  padding-right: 100px;
+  padding-left: 100px;
+}
+
+.page {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.langDropdownItems {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 4px;
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+
+    img {
+      height: 20px;
+      width: 20px;
+    }
+  }
 }

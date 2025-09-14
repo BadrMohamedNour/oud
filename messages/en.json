@@ -1,8 +1,11 @@
 {
   "metadata": {},
   "Common": {},
-  "Header": {},
-  "Footer": {},
+  "Header": { "Language": "Language" },
+  "Footer": {
+    "Al Mukhlif Oud": "Al Mukhlif Oud",
+    "© All rights reserved to Al Mukhlif Oud": "© All rights reserved to Al Mukhlif Oud"
+  },
   "Forms": {},
   "Login": {},
   "ContactUs": {},

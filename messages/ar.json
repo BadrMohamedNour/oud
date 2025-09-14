@@ -1,8 +1,11 @@
 {
   "metadata": {},
   "Common": {},
-  "Header": {},
-  "Footer": {},
+  "Header": { "Language": "اللغة" },
+  "Footer": {
+    "Al Mukhlif Oud": "المخلف للعود",
+    "© All rights reserved to Al Mukhlif Oud": "© جميع الحقوق محفوظة لـ المخلف للعود"
+  },
   "Forms": {},
   "Login": {},
   "ContactUs": {},

@@ -1,12 +1,18 @@
 import Image from "next/image";
 
-function PaymentInfo() {
+const PaymentInfo: React.FC<{ storeSettings: any }> = ({ storeSettings }) => {
   return (
     <div className="payment-info">
       <div className="details">
         <div className="text-container">
-          <span>السجل التجاري: 23456789011</span>
-          <span>الرقم الضريبي: 123456789011</span>
+          <span>
+            {storeSettings.commercial_registration_number.shown_name}:
+            {storeSettings.commercial_registration_number.value}
+          </span>
+          <span>
+            {storeSettings.tax_number.shown_name}:
+            {storeSettings.tax_number.value}
+          </span>
         </div>
         <ul>
           <li>
@@ -72,6 +78,6 @@ function PaymentInfo() {
       </ul>
     </div>
   );
-}
+};
 
 export default PaymentInfo;

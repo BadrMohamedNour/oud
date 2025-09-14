@@ -1,93 +1,55 @@
-// Components
-import Link from "next/link"
-import Links from "./sections/links"
-import SocialMedia from "./sections/social-media"
-import PaymentInfo from "./sections/payment-info"
+import { memo } from "react";
+import Link from "next/link";
+import SocialMedia from "./sections/social-media";
+import PaymentInfo from "./sections/payment-info";
+import { StoreData } from "@/types/store";
+import style from "./styles/footer.module.scss";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
 
-// Styles
-import style from "./styles/footer.module.scss"
+// Props interface for type safety
+interface FooterProps {
+  appData: StoreData;
+}
 
-// Images
-import SvgLogoWhite from "@/assets/svg/logoWhite"
+const Footer: React.FC<FooterProps> = ({ appData }) => {
+  const t = useTranslations("Footer");
 
-const categories = [
-  {
-    title: "الأقسام",
-    links: [
-      {
-        name: "خشب العود",
-        path: "",
-      },
-      {
-        name: "خشب العود",
-        path: "",
-      },
-      {
-        name: "خشب العود",
-        path: "",
-      },
-      {
-        name: "خشب العود",
-        path: "",
-      },
-    ],
-  },
-]
-
-const links = [
-  {
-    title: "المخلف للعود",
-    links: [
-      {
-        name: "عن المخلف",
-        path: "about-us",
-      },
-      {
-        name: "سياسة الخصوصية",
-        path: "/privacy-policy",
-      },
-      {
-        name: "شـــــروط الاســـــترجاع",
-        path: "/refunds",
-      },
-      {
-        name: "الشروط والأحكام",
-        path: "/terms-conditions",
-      },
-      {
-        name: "التحويل المصرفي",
-        path: "/bank-transfer",
-      },
-    ],
-  },
-]
-
-const Footer = () => {
   return (
-    <div className={style.footer}>
+    <footer className={`${style.footer} container`}>
       <div className="content">
         <div className="logo">
-          <Link href={"/"} title={""}>
-            <SvgLogoWhite />
+          <Link href="/">
+            <Image
+              src={appData.store_settings.company_logo.value}
+              fill
+              alt={appData.store_settings.company_logo.shown_name}
+            />
           </Link>
         </div>
 
-        <Links links={categories} />
+        <div className="links">
+          <h3>{t("Al Mukhlif Oud")}</h3>
+          <ul>
+            {appData.store_policies?.map(({ key, name, value }) => (
+              <li key={key}>
+                <Link href={value}>{name}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-        <Links links={links} />
-
-        <SocialMedia />
+        <SocialMedia storeContact={appData.store_contacts} />
       </div>
 
-      <div className="divider" />
+      <PaymentInfo storeSettings={appData.store_settings} />
 
-      <PaymentInfo />
+      <p className="copyright text-center text-gray-500 text-sm">
+        {t("© All rights reserved to Al Mukhlif Oud")}
+      </p>
+    </footer>
+  );
+};
 
-      <div className="divider" />
-
-      <p className="copyright">{"© جميع الحقوق محفوظة لـ المخلف للعود"}</p>
-    </div>
-  )
-}
-
-export default Footer
+// Memoize to prevent unnecessary re-renders
+export default memo(Footer);

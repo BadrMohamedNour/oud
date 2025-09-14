@@ -1,56 +1,40 @@
+import { memo } from "react";
 import Image from "next/image";
+import { StoreContact } from "@/types/store";
 
-const socialMediaLinks = [
-  {
-    icon: "/icons/social/telegram.svg",
-    link: "https://t.me/almokhlif3od",
-    title: "telegram",
-  },
-  {
-    icon: "/icons/social/youtube.svg",
-    link: "https://www.youtube.com/channel/UCgbuikbqHfbPavTfju01LAA",
-    title: "youtube",
-  },
-  {
-    icon: "/icons/social/instagram.svg",
-    link: "https://www.instagram.com/almokhlif3od/",
-    title: "instagram",
-  },
-  {
-    icon: "/icons/social/snapchat.svg",
-    link: "https://www.snapchat.com/add/almokhlif3od/",
-    title: "snapchat",
-  },
-  {
-    icon: "/icons/social/tiktok.svg",
-    link: "https://www.tiktok.com/@almokhlif3od",
-    title: "tiktok",
-  },
-  {
-    icon: "/icons/social/x.svg",
-    link: "https://x.com/almokhlif3od",
-    title: "X",
-  },
-];
+// Map of social media platforms to their icon paths
+const SOCIAL_MEDIA_ICONS: Readonly<Record<StoreContact["key"], string>> = {
+  youtube: "/icons/social/youtube.svg",
+  instagram: "/icons/social/instagram.svg",
+  linkedin: "/icons/social/linkedin.svg",
+  facebook: "/icons/social/facebook.svg",
+  twitter: "/icons/social/twitter.svg",
+};
 
-function SocialMedia() {
+// Props interface for type checking
+interface SocialMediaProps {
+  storeContact: ReadonlyArray<StoreContact>;
+}
+
+const SocialMedia: React.FC<SocialMediaProps> = ({ storeContact }) => {
   return (
     <ul className="social-media">
-      {socialMediaLinks.map(({ icon, link, title }) => (
-        <li key={title}>
-          <a href={link || "#"} target="_blank" rel="noopener noreferrer">
+      {storeContact?.map(({ key, name, value }) => (
+        <li key={key}>
+          <a href={value} target="_blank" rel="noopener noreferrer">
             <Image
-              src={icon}
+              src={SOCIAL_MEDIA_ICONS[key]}
               width={24}
               height={24}
-              alt={title}
-              title={title}
+              alt={`${name}-icon`}
+              title={name}
+              priority={false}
             />
           </a>
         </li>
       ))}
     </ul>
   );
-}
+};
 
-export default SocialMedia;
+export default memo(SocialMedia);

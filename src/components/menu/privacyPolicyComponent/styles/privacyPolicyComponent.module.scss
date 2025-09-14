@@ -1,0 +1,45 @@
+.privacyPolicyComponent :global {
+  .head {
+    text-align: center;
+    margin-bottom: 50px;
+
+    .logo {
+      text-align: center;
+      margin-bottom: 40px;
+
+      svg {
+        height: 100px;
+
+        @media (min-width: 768px) {
+          height: 140px;
+        }
+      }
+    }
+  }
+
+  .content {
+    padding: 0px 100px;
+
+    & > div {
+      margin-top: 30px;
+
+      h2 {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.5;
+        margin-bottom: 24px;
+      }
+
+      p {
+        font-size: 1rem;
+        color: #60686c;
+      }
+
+      ul li {
+        list-style: disc;
+        list-style-position: inside;
+        padding: 8px 0px;
+      }
+    }
+  }
+}

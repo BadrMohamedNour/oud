@@ -1,0 +1,44 @@
+.indexComponent :global {
+  .hero-section {
+    height: 315px;
+    max-width: 1080px;
+    margin: 0 auto;
+
+    .swiper {
+      height: 100%;
+      width: 100%;
+
+      .swiper-slide a img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .swiper-pagination {
+        position: absolute;
+        bottom: 10px;
+        text-align: center;
+        width: 100%;
+
+        .swiper-pagination-bullet {
+          width: 8px;
+          height: 8px;
+          background: #fff;
+          opacity: 0.4;
+          border-radius: 50%;
+          margin: 0 4px;
+          cursor: pointer;
+        }
+
+        .swiper-pagination-bullet-active {
+          opacity: 1;
+          background: #fff;
+        }
+      }
+    }
+
+    @media (max-width: 900px) {
+      height: auto;
+    }
+  }
+}

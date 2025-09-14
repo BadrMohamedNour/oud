@@ -1,22 +1,23 @@
-"use client"
+"use client";
 
 // Styles
-import style from "./styles/header.module.scss"
+import style from "./styles/header.module.scss";
 
 // Components
-import { Badge, Col, Row } from "antd"
-import Link from "next/link"
-import MainDrawer from "@/components/layout/header/sections/mainDrawer"
-import ButtonS1 from "@/components/common/ui/buttons/buttonS1/buttonS1"
+import { Badge } from "antd";
+import Link from "next/link";
+import MainDrawer from "@/components/layout/header/sections/mainDrawer";
+import ButtonS1 from "@/components/common/ui/buttons/buttonS1/buttonS1";
+import LangSwitcher from "./sections/langSwitcher";
 
 // Images & Icons
-import SvgLogo from "@/assets/svg/logo"
-import SvgUser from "@/assets/svg/user"
-import SvgLogoText from "@/assets/svg/logoText"
-import SvgShoppingBag from "@/assets/svg/shoppingBag"
+import SvgLogo from "@/assets/svg/logo";
+import SvgUser from "@/assets/svg/user";
+import SvgLogoText from "@/assets/svg/logoText";
+import SvgShoppingBag from "@/assets/svg/shoppingBag";
 
 // Hooks
-import { useCart } from "@/hook/use-cart"
+import { useCart } from "@/hook/use-cart";
 
 const categories = [
   {
@@ -84,13 +85,13 @@ const categories = [
     id: "151",
     path: `/17`,
   },
-]
+];
 
 const Header = () => {
-  const { getItemCount } = useCart()
+  const { getItemCount } = useCart();
 
   return (
-    <header className={style.header}>
+    <header className={`${style.header} container`}>
       <div className="content">
         <div className="logo">
           <Link href="/" title="">
@@ -104,8 +105,16 @@ const Header = () => {
         </div>
 
         <div className="actions">
+          <LangSwitcher />
+
           <Badge count={getItemCount()}>
-            <ButtonS1 icon type="link" styles="cart" path="/cart" text={<SvgShoppingBag />} />
+            <ButtonS1
+              icon
+              type="link"
+              styles="cart"
+              path="/cart"
+              text={<SvgShoppingBag />}
+            />
           </Badge>
 
           <MainDrawer />
@@ -129,7 +138,7 @@ const Header = () => {
         ))}
       </ul>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

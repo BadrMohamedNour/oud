@@ -1,6 +1,7 @@
 .footer :global {
   background-color: #341547;
-  padding: 71px 100px 40px 100px;
+  padding-top: 71px;
+  padding-bottom: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -10,30 +11,24 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+    padding-bottom: 85px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #4b1e66;
 
     .logo {
       display: flex;
       flex-direction: column;
+      height: 118px;
+      width: 190px;
+      a {
+        display: block;
+        height: 100%;
+        position: relative;
+      }
     }
 
     .links {
-      display: flex;
-      flex-direction: column;
-      margin-right: 90px;
-      justify-content: space-between;
-      gap: 40px; // 5 * 8px (assuming 1 unit = 8px, common in MUI)
-
-      @media (min-width: 1200px) {
-        flex-direction: row;
-      }
-
-      &__section {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-      }
-
-      &__title {
+      h3 {
         font-size: 20px;
         font-weight: 500;
         margin-bottom: 24px;
@@ -44,7 +39,7 @@
       ul {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        row-gap: 16px;
+        gap: 16px 18px;
 
         li {
           grid-column: span 1;
@@ -57,6 +52,10 @@
             display: block;
           }
         }
+      }
+
+      @media (min-width: 1200px) {
+        flex-direction: row;
       }
     }
 
@@ -95,19 +94,15 @@
     }
   }
 
-  .divider {
-    height: 1px;
-    background-color: #4b1e66;
-    margin-top: 85px;
-    margin-bottom: 40px;
-  }
-
   .payment-info {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     gap: 16px;
+    padding-bottom: 85px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #4b1e66;
 
     .details {
       display: flex;
