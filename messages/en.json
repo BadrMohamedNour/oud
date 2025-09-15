@@ -1,13 +1,22 @@
 {
   "metadata": {},
-  "Common": {},
-  "Header": { "Language": "Language" },
+  "Common": { "SAR": "SAR", "Add to cart": "Add to cart" },
+  "Header": {
+    "Language": "Language",
+    "en": "English",
+    "ar": "Arabic",
+    "All Categories": "All Categories"
+  },
   "Footer": {
     "Al Mukhlif Oud": "Al Mukhlif Oud",
     "© All rights reserved to Al Mukhlif Oud": "© All rights reserved to Al Mukhlif Oud"
   },
   "Forms": {},
-  "Login": {},
+  "Home": {
+    "Best seller": "Best seller",
+    "New arrival": "New arrival",
+    "Most Featured": "Most Featured"
+  },
   "ContactUs": {},
   "TermsConditions": {},
   "PrivacyPolicy": {},

@@ -7,8 +7,9 @@ import style from "./styles/header.module.scss";
 import { Badge } from "antd";
 import Link from "next/link";
 import MainDrawer from "@/components/layout/header/sections/mainDrawer";
-import ButtonS1 from "@/components/common/ui/buttons/buttonS1/buttonS1";
+import ButtonS1 from "@/components/tools/buttons/buttonS1/buttonS1";
 import LangSwitcher from "./sections/langSwitcher";
+import CategoriesMenu from "./sections/categoriesMenu";
 
 // Images & Icons
 import SvgLogo from "@/assets/svg/logo";
@@ -19,75 +20,10 @@ import SvgShoppingBag from "@/assets/svg/shoppingBag";
 // Hooks
 import { useCart } from "@/hook/use-cart";
 
-const categories = [
-  {
-    name: "هندي",
-    id: "109",
-    path: `/17`,
-  },
-  {
-    name: "سيلاني",
-    id: "110",
-    path: `/17`,
-  },
-  {
-    name: "مروكي",
-    id: "108",
-    path: `/17`,
-  },
-  {
-    name: "فلبيني",
-    id: "150",
-    path: `/17`,
-  },
-  {
-    name: "كلمنتان",
-    id: "111",
-    path: `/17`,
-  },
-  {
-    name: "ماليزي",
-    id: "149",
-    path: `/17`,
-  },
-  {
-    name: "جنوب تايلند",
-    id: "123",
-    path: `/17`,
-  },
-  {
-    name: "كوياي",
-    id: "192",
-    path: `/17`,
-  },
-  {
-    name: "براشين",
-    id: "187",
-    path: `/17`,
-  },
-  {
-    name: "ترات",
-    id: "134",
-    path: `/17`,
-  },
-  {
-    name: "لاوسي",
-    id: "133",
-    path: `/17`,
-  },
-  {
-    name: "كمبودي",
-    id: "122",
-    path: `/17`,
-  },
-  {
-    name: "سومطري",
-    id: "151",
-    path: `/17`,
-  },
-];
+// Types
+import { Categories } from "@/types/categories";
 
-const Header = () => {
+const Header: React.FC<{ categories: Categories }> = ({ categories }) => {
   const { getItemCount } = useCart();
 
   return (
@@ -130,13 +66,7 @@ const Header = () => {
         </div>
       </div>
 
-      <ul className="categories">
-        {categories.map(({ id, name, path }) => (
-          <li key={id}>
-            <Link href={path}>{name}</Link>
-          </li>
-        ))}
-      </ul>
+      <CategoriesMenu categories={categories} />
     </header>
   );
 };

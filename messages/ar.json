@@ -1,13 +1,25 @@
 {
   "metadata": {},
-  "Common": {},
-  "Header": { "Language": "اللغة" },
+  "Common": {
+    "SAR": "ريال",
+    "Add to cart": "إضافة للسلة"
+  },
+  "Header": {
+    "Language": "اللغة",
+    "en": "الانجليزية",
+    "ar": "العربية",
+    "All Categories": "جميع الأقسام"
+  },
   "Footer": {
     "Al Mukhlif Oud": "المخلف للعود",
     "© All rights reserved to Al Mukhlif Oud": "© جميع الحقوق محفوظة لـ المخلف للعود"
   },
   "Forms": {},
-  "Login": {},
+  "Home": {
+    "Best seller": "الأكثر مبيعاً",
+    "New arrival": "وصل حديثا",
+    "Most Featured": "الأكثر تميزًا"
+  },
   "ContactUs": {},
   "TermsConditions": {},
   "PrivacyPolicy": {},

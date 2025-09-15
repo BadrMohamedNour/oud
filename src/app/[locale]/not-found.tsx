@@ -1,4 +1,4 @@
-import Message from "@/components/common/error/message";
+import Message from "@/components/tools/error/message";
 
 function NotFound() {
   return <Message message={"لم يتم العثور على هذه الصفحة"} />;

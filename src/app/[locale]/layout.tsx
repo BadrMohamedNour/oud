@@ -1,8 +1,9 @@
-// Wraaper
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { NextIntlClientProvider } from "next-intl";
+import { Metadata } from "next";
 
 // Components
+import Header from "@/components/layout/header/header";
 import Footer from "@/components/layout/footer/footer";
 import MobileFooter from "@/components/layout/mobile-footer/mobile-footer";
 
@@ -10,36 +11,46 @@ import MobileFooter from "@/components/layout/mobile-footer/mobile-footer";
 import ExpoArabicFont from "@/assets/font/fontFamily";
 
 // Hooks
-import { getMessages, getTranslations } from "next-intl/server";
-
-// Styles
-import "@/styles/globals.scss";
-
-// Types
-import { Metadata } from "next";
+import { getMessages } from "next-intl/server";
 
 // Actions
 import { getAppData } from "@/apiCalls/appApiCall";
+import { getCategories } from "@/apiCalls/categoriesApiCall";
 
 // Context
 import { CartProvider } from "@/context/cart-context";
 
+// Styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "@/styles/globals.scss";
+
+// Types
+interface RootLayoutProps {
+  children: React.ReactNode;
+  params: { locale: string };
+}
+
+// Constants
+const METADATA_BASE_URL = "https://almokhlifoud.com";
+
 export default async function RootLayout({
   children,
   params: { locale },
-}: Readonly<{
-  children: React.ReactNode;
-  params: { locale: string };
-}>) {
-  const messages = await getMessages();
-  const appData = await getAppData();
+}: Readonly<RootLayoutProps>) {
+  const [messages, appData, categories] = await Promise.all([
+    getMessages(),
+    getAppData(),
+    getCategories(),
+  ]);
 
   return (
-    <html lang={locale} dir="rtl">
+    <html lang={locale}>
       <body className={ExpoArabicFont.variable}>
         <AntdRegistry>
           <NextIntlClientProvider messages={messages}>
             <CartProvider>
+              <Header categories={categories} />
               {children}
               <Footer appData={appData} />
               <MobileFooter />
@@ -51,29 +62,31 @@ export default async function RootLayout({
   );
 }
 
-export const generateMetadata = async (): Promise<Metadata> => {
+export async function generateMetadata(): Promise<Metadata> {
   const { store_settings } = await getAppData();
+  const storeName = store_settings.store_name.value;
+  const favicon = store_settings.favicon.value;
 
   return {
-    title: store_settings.store_name.value,
-    description: store_settings.store_name,
-    metadataBase: new URL("https://almokhlifoud.com"),
-    icons: { icon: store_settings.favicon.value },
-    keywords: [""],
+    title: storeName,
+    description: storeName,
+    metadataBase: new URL(METADATA_BASE_URL),
+    icons: { icon: favicon },
+    keywords: [],
     openGraph: {
-      title: store_settings.store_name.value,
+      title: storeName,
       description: "",
-      images: [""],
-      url: "https://almokhlifoud.com",
+      images: [],
+      url: METADATA_BASE_URL,
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: store_settings.store_name.value,
+      title: storeName,
       description: "",
-      site: store_settings.store_name.value,
+      site: storeName,
       creator: "",
-      images: [""],
+      images: [],
     },
   };
-};
+}

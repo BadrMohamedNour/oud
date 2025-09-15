@@ -1,0 +1,44 @@
+.productCard :global {
+  .img {
+    height: 281px;
+    width: 141px;
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  .details {
+    margin-bottom: 20px;
+
+    h4 {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 27px;
+      color: #1a1c1d;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #1a1c1d;
+      font-weight: 600;
+    }
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    width: 100%;
+    background: #341547;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #ffff;
+
+    &:hover {
+      background: #4b1e66;
+    }
+  }
+}

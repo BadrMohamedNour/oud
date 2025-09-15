@@ -1,63 +1,64 @@
-// Components
-import Image from "next/image";
-import { Button, Dropdown } from "antd";
+"use client";
 
-// Icons
+import { usePathname, useRouter } from "@/i18n/navigation";
+import { useLocale, useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
+import { useTransition } from "react";
+import { Dropdown, type MenuProps } from "antd";
+import Image from "next/image";
+
+// Assets
 import langIcon from "../../../../../public/icons/langs/langIcon.svg";
-import en from "../../../../../public/icons/langs//en.png";
-import ar from "../../../../../public/icons/langs/en.png";
+import en from "../../../../../public/icons/langs/en.png";
+import ar from "../../../../../public/icons/langs/ar.webp";
 
 // Types
-import type { MenuProps } from "antd";
-
-// Hooks
-import { useTransition } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { Locale } from "next-intl";
 
 const LangSwitcher = () => {
+  const router = useRouter();
   const [isPending, startTransition] = useTransition();
-  const t = useTranslations("Header");
+  const pathname = usePathname();
+  const params = useParams();
   const locale = useLocale();
+  const t = useTranslations("Header");
 
-  const items: MenuProps["items"] = [
-    {
-      label: (
-        <button onClick={() => onSelectChange("en")} disabled={locale === "en"}>
-          <Image src={en} alt="English" />
-          <span>English</span>
-        </button>
-      ),
-      key: "0",
-    },
-    {
-      label: (
-        <button onClick={() => onSelectChange("ar")} disabled={locale === "ar"}>
-          <Image src={ar} alt="العربية" />
-          <span>العربية</span>
-        </button>
-      ),
-      key: "1",
-    },
-  ];
-
-  const onSelectChange = (nextLocale: string) => {
+  const switchLanguage = (nextLocale: Locale) => {
     startTransition(() => {
-      document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000; SameSite=Lax`;
-      window.location.reload();
+      router.replace(pathname, { locale: nextLocale });
     });
   };
 
+  const menuItems: MenuProps["items"] = [
+    {
+      key: "en",
+      label: (
+        <button onClick={() => switchLanguage("en")} disabled={locale === "en"}>
+          <Image src={en} alt="English" width={24} height={24} />
+        </button>
+      ),
+    },
+    {
+      key: "ar",
+      label: (
+        <button onClick={() => switchLanguage("ar")} disabled={locale === "ar"}>
+          <Image src={ar} alt="العربية" width={24} height={24} />
+        </button>
+      ),
+    },
+  ];
+
   return (
     <Dropdown
-      menu={{ items }}
+      menu={{ items: menuItems }}
       trigger={["click"]}
-      rootClassName="langDropdownItems"
-      className="langDropdown"
+      overlayClassName="lang-dropdown-items"
+      className="lang-dropdown"
       disabled={isPending}
     >
-      <Button>
+      <a onClick={(e) => e.preventDefault()}>
         <Image src={langIcon} alt={t("Language")} />
-      </Button>
+      </a>
     </Dropdown>
   );
 };

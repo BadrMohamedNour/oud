@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "lv.almokhlif3od.com",
       },
+      {
+        protocol: "https",
+        hostname: "oud.azureedge.net",
+      },
     ],
   },
 };

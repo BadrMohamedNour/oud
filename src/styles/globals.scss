@@ -13,6 +13,10 @@ body {
   background-color: #ffff;
 }
 
+body:lang(ar) {
+  direction: rtl;
+}
+
 ol,
 ul {
   list-style: none;
@@ -25,6 +29,7 @@ a {
 
 button {
   background-color: transparent;
+  cursor: pointer;
 }
 
 .container {
@@ -37,19 +42,28 @@ button {
   padding-bottom: 48px;
 }
 
-.langDropdownItems {
+.lang-dropdown-items {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 4px;
 
-  button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border: none;
+  li {
+    padding: 0px !important;
 
-    img {
-      height: 20px;
-      width: 20px;
+    button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      padding: 5px 12px;
+
+      img {
+        height: 20px;
+        width: 20px;
+      }
+
+      &:disabled {
+        background: #ddd;
+      }
     }
   }
 }

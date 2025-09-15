@@ -9,9 +9,17 @@ const getBanners = async () => {
   return response.data.data;
 };
 
+const getProducts = async () => {
+  const response = await axios.get("/home-page-products");
+
+  return response.data.data;
+};
+
 const HomePage: React.FC = () => {
   const banners = use(getBanners());
-  return <IndexComponent banners={banners} />;
+  const products = use(getProducts());
+
+  return <IndexComponent banners={banners} products={products} />;
 };
 
 export default HomePage;
