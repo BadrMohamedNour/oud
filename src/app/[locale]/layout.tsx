@@ -1,52 +1,47 @@
-import { AntdRegistry } from "@ant-design/nextjs-registry";
-import { NextIntlClientProvider } from "next-intl";
-import { Metadata } from "next";
+import { AntdRegistry } from "@ant-design/nextjs-registry"
+import { NextIntlClientProvider } from "next-intl"
+import { Metadata } from "next"
 
 // Components
-import Header from "@/components/layout/header/header";
-import Footer from "@/components/layout/footer/footer";
-import MobileFooter from "@/components/layout/mobile-footer/mobile-footer";
+import Header from "@/components/layout/header/header"
+import Footer from "@/components/layout/footer/footer"
+import MobileFooter from "@/components/layout/mobile-footer/mobile-footer"
 
 // Fonts
-import ExpoArabicFont from "@/assets/font/fontFamily";
+import { Tajawal } from "next/font/google"
 
 // Hooks
-import { getMessages } from "next-intl/server";
+import { getMessages } from "next-intl/server"
 
 // Actions
-import { getAppData } from "@/apiCalls/appApiCall";
-import { getCategories } from "@/apiCalls/categoriesApiCall";
+import { getAppData } from "@/apiCalls/appApiCall"
+import { getCategories } from "@/apiCalls/categoriesApiCall"
 
 // Context
-import { CartProvider } from "@/context/cart-context";
+import { CartProvider } from "@/context/cart-context"
 
 // Styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "@/styles/globals.scss";
+import "swiper/css"
+import "swiper/css/pagination"
+import "@/styles/globals.scss"
 
 // Types
 interface RootLayoutProps {
-  children: React.ReactNode;
-  params: { locale: string };
+  children: React.ReactNode
+  params: { locale: string }
 }
 
 // Constants
-const METADATA_BASE_URL = "https://almokhlifoud.com";
+const METADATA_BASE_URL = "https://almokhlifoud.com"
 
-export default async function RootLayout({
-  children,
-  params: { locale },
-}: Readonly<RootLayoutProps>) {
-  const [messages, appData, categories] = await Promise.all([
-    getMessages(),
-    getAppData(),
-    getCategories(),
-  ]);
+const tajawal = Tajawal({ subsets: ["arabic"], weight: ["400", "500", "700", "800", "900"] })
+
+export default async function RootLayout({ children, params: { locale } }: Readonly<RootLayoutProps>) {
+  const [messages, appData, categories] = await Promise.all([getMessages(), getAppData(), getCategories()])
 
   return (
     <html lang={locale}>
-      <body className={ExpoArabicFont.variable}>
+      <body className={tajawal.className}>
         <AntdRegistry>
           <NextIntlClientProvider messages={messages}>
             <CartProvider>
@@ -59,13 +54,13 @@ export default async function RootLayout({
         </AntdRegistry>
       </body>
     </html>
-  );
+  )
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { store_settings } = await getAppData();
-  const storeName = store_settings.store_name.value;
-  const favicon = store_settings.favicon.value;
+  const { store_settings } = await getAppData()
+  const storeName = store_settings.store_name.value
+  const favicon = store_settings.favicon.value
 
   return {
     title: storeName,
@@ -88,5 +83,5 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: "",
       images: [],
     },
-  };
+  }
 }

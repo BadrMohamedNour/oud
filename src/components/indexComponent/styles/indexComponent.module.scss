@@ -1,13 +1,15 @@
+@use "@/styles/_mixins" as *;
+
 .indexComponent :global {
   .hero-section {
-    height: 315px;
-    max-width: 1080px;
+    height: 350px;
     margin: 0 auto;
-    margin-bottom: 40px;
+    margin-bottom: 48px;
 
     .swiper {
       height: 100%;
       width: 100%;
+      border-radius: 6px;
 
       .swiper-slide a img {
         width: 100%;
@@ -38,12 +40,19 @@
       }
     }
 
-    @media (max-width: 900px) {
-      height: auto;
+    @include extraSmall {
+      height: 150px;
     }
   }
 
+  .sidebar-section {
+  }
+
   .products-section {
-    margin-bottom: 40px;
+    margin-bottom: 48px;
+
+    h2 {
+      margin-bottom: 24px;
+    }
   }
 }

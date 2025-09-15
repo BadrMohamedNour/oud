@@ -1,13 +1,16 @@
+@use "@/styles/_mixins" as *;
+
 .header :global {
   border-bottom: 1px solid #e5e7eb;
   padding-top: 16px;
   padding-bottom: 16px;
+  background-color: #fff;
+
   .content {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
     margin-bottom: 16px;
 
     .logo {
@@ -56,36 +59,27 @@
       }
 
       .cart {
-        display: none;
-
-        @media (min-width: 900px) {
-          display: block;
-
-          a {
-            height: 48px;
-            width: 48px;
-          }
+        a {
+          height: 48px;
+          width: 48px;
         }
       }
 
       .menuBtn {
-        display: block;
+        display: none;
+      }
 
-        @media (min-width: 900px) {
+      @include small {
+        gap: 16px;
+
+        .cart,
+        .auth {
           display: none;
         }
-      }
 
-      .auth {
-        display: none;
-
-        @media (min-width: 900px) {
+        .menuBtn {
           display: block;
         }
-      }
-
-      @media (min-width: 900px) {
-        gap: 16px;
       }
     }
   }
@@ -111,9 +105,8 @@
     .overlay {
       display: none;
       position: fixed;
-      right: 0;
-      top: 122px;
-      z-index: 9;
+      inset: 0;
+      z-index: -1;
       height: 100%;
       width: 100%;
       background: rgba(0, 0, 0, 0.6);
@@ -149,6 +142,10 @@
           }
         }
       }
+    }
+
+    @include small {
+      display: none;
     }
   }
 }

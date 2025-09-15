@@ -1,20 +1,20 @@
 // COmponents
-import Image from "next/image";
-import Link from "next/link";
+import Image from "next/image"
+import Link from "next/link"
 
 // Style
-import style from "./styles/productCard.module.scss";
+import style from "./styles/productCard.module.scss"
 
 // TYpes
-import { Product } from "@/types/home";
-import { useTranslations } from "next-intl";
+import { Product } from "@/types/home"
+import { useTranslations } from "next-intl"
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
-  const t = useTranslations("Common");
+  const t = useTranslations("Common")
 
   return (
     <Link href={`/${product.slug}`} className={style.productCard}>
-      <div>
+      <div className="content">
         <div className="img">
           <Image fill src={product.feature_image} alt={product.name} />
         </div>
@@ -24,10 +24,12 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
             {product.price} {t("SAR")}
           </p>
         </div>
-        <button>{t("Add to cart")}</button>
+        <button>
+          <span>{t("Add to cart")}</span>
+        </button>
       </div>
     </Link>
-  );
-};
+  )
+}
 
-export default ProductCard;
+export default ProductCard

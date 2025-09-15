@@ -1,0 +1,40 @@
+$extraSmall-width: 480px;
+$small-width: 991px;
+$medium-width: 1100px;
+$large-width: 1300px;
+
+@mixin extraSmall {
+  @media (max-width: #{$small-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media (max-width: #{$small-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media (max-width: #{$medium-width}) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (max-width: #{$large-width}) {
+    @content;
+  }
+}
+
+@mixin dark {
+  @at-root body.dark-mode & {
+    @content;
+  }
+}
+
+@mixin dark-global {
+  :global(.dark-mode) & {
+    @content;
+  }
+}

@@ -37,12 +37,8 @@
       }
 
       ul {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px 18px;
-
         li {
-          grid-column: span 1;
+          margin-bottom: 18px;
 
           a {
             font-size: 16px;
