@@ -1,3 +1,5 @@
+@use "@/styles/_variables" as *;
+
 .buttons1 :global {
   a,
   button {
@@ -11,7 +13,7 @@
     font-size: 14px;
     font-weight: 500;
     color: #000;
-    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     background-color: #ffff;
 
     &.iconBtn {
@@ -20,16 +22,29 @@
     }
 
     &:hover {
-      border-color: #f1b11d;
+      border-color: #f1b11d !important;
     }
+  }
+}
 
-    &:active {
-      background-color: #f1b11d;
-    }
+.buttonS2 :global {
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 100%;
+    background: $c-s;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #fff;
+    border: 1px solid transparent;
+    transition: all 0.1s ease-out;
 
-    &:active * {
-      color: #ffff;
-      stroke: #ffff;
+    &:hover {
+      color: $c-s !important;
+      border-color: $c-s !important;
     }
   }
 }

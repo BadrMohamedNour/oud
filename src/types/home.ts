@@ -26,3 +26,8 @@ export type Products = {
   new: Product[];
   feature: Product[];
 };
+
+export interface IndexComponentProps {
+  banners: { hero: Banners; bottom: Banners; sidebar: Banners };
+  products: Products;
+}

@@ -38,26 +38,5 @@
         font-weight: 600;
       }
     }
-
-    button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 48px;
-      width: 100%;
-      background: #341547;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      color: #ffff;
-
-      span {
-        margin-bottom: -5px;
-      }
-
-      &:hover {
-        background: #4b1e66;
-      }
-    }
   }
 }

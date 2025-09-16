@@ -7,7 +7,6 @@ import style from "./styles/footer.module.scss";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
-// Props interface for type safety
 interface FooterProps {
   appData: StoreData;
 }
@@ -21,9 +20,9 @@ const Footer: React.FC<FooterProps> = ({ appData }) => {
         <div className="logo">
           <Link href="/">
             <Image
-              src={appData.store_settings.company_logo.value}
+              src={appData?.store_settings.company_logo.value}
               fill
-              alt={appData.store_settings.company_logo.shown_name}
+              alt={appData?.store_settings.company_logo.shown_name}
             />
           </Link>
         </div>
@@ -31,7 +30,7 @@ const Footer: React.FC<FooterProps> = ({ appData }) => {
         <div className="links">
           <h3>{t("Al Mukhlif Oud")}</h3>
           <ul>
-            {appData.store_policies?.map(({ key, name, value }) => (
+            {appData?.store_policies?.map(({ key, name, value }) => (
               <li key={key}>
                 <Link href={value}>{name}</Link>
               </li>
@@ -39,10 +38,10 @@ const Footer: React.FC<FooterProps> = ({ appData }) => {
           </ul>
         </div>
 
-        <SocialMedia storeContact={appData.store_contacts} />
+        <SocialMedia storeContact={appData?.store_contacts} />
       </div>
 
-      <PaymentInfo storeSettings={appData.store_settings} />
+      <PaymentInfo storeSettings={appData?.store_settings} />
 
       <p className="copyright text-center text-gray-500 text-sm">
         {t("© All rights reserved to Al Mukhlif Oud")}
@@ -51,5 +50,4 @@ const Footer: React.FC<FooterProps> = ({ appData }) => {
   );
 };
 
-// Memoize to prevent unnecessary re-renders
 export default memo(Footer);

@@ -1,17 +1,31 @@
 {
   "metadata": {},
-  "Common": { "SAR": "SAR", "Add to cart": "Add to cart" },
+  "Common": {
+    "SAR": "SAR",
+    "Add to cart": "Add to cart"
+  },
   "Header": {
     "Language": "Language",
     "en": "English",
     "ar": "Arabic",
-    "All Categories": "All Categories"
+    "All Categories": "All Categories",
+    "Login": "Login",
+    "Welcome Back": "Welcome back",
+    "Login to your account to continue": "Sign in to your account to continue",
+    "Forgot your password?": "Forgot your password?",
+    "Reset password": "Reset password",
+    "Reset description": "To reset your password, please enter your registered email address. A message with a reset code will be sent to your email address."
   },
   "Footer": {
     "Al Mukhlif Oud": "Al Mukhlif Oud",
     "© All rights reserved to Al Mukhlif Oud": "© All rights reserved to Al Mukhlif Oud"
   },
-  "Forms": {},
+  "Forms": {
+    "Email": "Email",
+    "Password": "Password",
+    "required": "Required",
+    "Login": "Login"
+  },
   "Home": {
     "Best seller": "Best seller",
     "New arrival": "New arrival",

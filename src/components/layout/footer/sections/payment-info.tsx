@@ -6,12 +6,12 @@ const PaymentInfo: React.FC<{ storeSettings: any }> = ({ storeSettings }) => {
       <div className="details">
         <div className="text-container">
           <span>
-            {storeSettings.commercial_registration_number.shown_name}:
-            {storeSettings.commercial_registration_number.value}
+            {storeSettings?.commercial_registration_number.shown_name}:
+            {storeSettings?.commercial_registration_number.value}
           </span>
           <span>
-            {storeSettings.tax_number.shown_name}:
-            {storeSettings.tax_number.value}
+            {storeSettings?.tax_number.shown_name}:
+            {storeSettings?.tax_number.value}
           </span>
         </div>
         <ul>

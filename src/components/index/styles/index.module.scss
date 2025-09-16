@@ -1,10 +1,16 @@
 @use "@/styles/_mixins" as *;
 
 .indexComponent :global {
-  .hero-section {
+  .banner-section {
     height: 350px;
     margin: 0 auto;
     margin-bottom: 48px;
+
+    &.sidebar-section {
+      height: 800px;
+      width: 300px;
+      margin: 0;
+    }
 
     .swiper {
       height: 100%;
@@ -45,14 +51,22 @@
     }
   }
 
-  .sidebar-section {
-  }
-
-  .products-section {
+  .withSidebar-section {
+    display: flex;
+    gap: 16px;
     margin-bottom: 48px;
 
-    h2 {
-      margin-bottom: 24px;
+    .products-sections {
+      max-width: 100%;
+      overflow-x: hidden;
+
+      .products-section {
+        margin-bottom: 48px;
+
+        h2 {
+          margin-bottom: 24px;
+        }
+      }
     }
   }
 }

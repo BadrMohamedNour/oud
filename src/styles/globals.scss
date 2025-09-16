@@ -9,14 +9,14 @@
 
 html {
   --color-primary: #ed1c24;
-  --color-second: #d1d1db;
+  --color-second: #341547;
   --color-third: #809c8d;
   --color-fourth: #ebebef;
   --color-fifth: #1a1a20;
   --color-error: #ffe9ebcc;
 
   --color-font-primary: #121217;
-  --color-font-second: #6c6c89;
+  --color-font-second: #484e51;
 
   --color-bg-primary: #f7f7f8;
   --color-bg-second: #1a1a20;
@@ -31,9 +31,11 @@ html {
 }
 
 body {
+  width: 100% !important;
+  overflow-y: auto !important;
   font-size: 14px;
   font-weight: 400;
-  font-family: "Tajawal", "Cairo", "sans-serif";
+  font-family: "Tajawal", "Cairo", "sans-serif" !important;
   background: #f8f8f8;
   overflow-x: hidden;
 }
@@ -72,6 +74,7 @@ button {
 .container {
   padding-right: 100px;
   padding-left: 100px;
+  overflow-x: hidden;
 
   @include small {
     padding-right: 50px;
@@ -89,32 +92,58 @@ button {
   padding-bottom: 48px;
 }
 
-.lang-dropdown-items {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border-radius: 4px;
+.error-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding-top: 1.75rem;
+  text-align: center;
 
-  li {
-    padding: 0px !important;
+  .error-title {
+    font-size: 1.875rem;
+    color: $c-p;
+    font-weight: 600;
+  }
 
-    button {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border: none;
-      padding: 5px 12px;
+  .error-message {
+    color: $c-f-s;
+    margin: 0.75rem 0;
+    font-size: 1.25rem;
+  }
 
-      img {
-        height: 20px;
-        width: 20px;
-      }
+  .retry-button {
+    height: 48px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $c-s;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
 
-      &:disabled {
-        background: #ddd;
-      }
+    &:hover {
+      background-color: $c-f-p;
     }
+
+    span {
+      margin-bottom: -5px;
+    }
+  }
+
+  .home-link {
+    font-size: 1.25rem;
+    text-decoration: underline;
+    color: $c-f-p;
+    display: block;
+    margin-top: 1.5rem;
   }
 }
 
-.swiper {
-  z-index: -2 !important;
+input {
+  border-radius: 4px;
 }

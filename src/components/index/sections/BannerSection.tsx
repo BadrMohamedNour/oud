@@ -1,15 +1,22 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Pagination, Autoplay } from "swiper/modules"
+import Link from "next/link";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
 
-import { Banners } from "@/types/home"
+import { Banners } from "@/types/home";
 
-const SidebarSection: React.FC<{ banners: Banners }> = ({ banners }) => {
+const BannerSection: React.FC<{ style?: string; banners: Banners }> = ({
+  style,
+  banners,
+}) => {
+  if (!banners?.length) {
+    return null;
+  }
+
   return (
-    <aside className="sidebar-section">
+    <div className={`banner-section ${style}`}>
       <Swiper
         className="swiper"
         pagination={{
@@ -27,8 +34,8 @@ const SidebarSection: React.FC<{ banners: Banners }> = ({ banners }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </aside>
-  )
-}
+    </div>
+  );
+};
 
-export default SidebarSection
+export default BannerSection;

@@ -1,18 +1,26 @@
 //Components
-import IndexComponent from "@/components/indexComponent/indexComponent";
+import IndexComponent from "@/components/index";
 import axios from "@/lib/axios";
 import { use } from "react";
 
 const getBanners = async () => {
-  const response = await axios.get("/banners-grouped-by-position");
+  try {
+    const response = await axios.get("/banners-grouped-by-position");
 
-  return response.data.data;
+    return response.data.data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const getProducts = async () => {
-  const response = await axios.get("/home-page-products");
+  try {
+    const response = await axios.get("/home-page-products");
 
-  return response.data.data;
+    return response.data.data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const HomePage: React.FC = () => {

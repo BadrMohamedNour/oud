@@ -1,3 +1,4 @@
+@use "@/styles/_variables" as *;
 @use "@/styles/_mixins" as *;
 
 .header :global {
@@ -36,7 +37,24 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: 0;
+      gap: 8px;
+
+      .loginBtn {
+        button {
+          height: 38px;
+          border: 1px solid $c-s;
+          border-radius: 30px;
+          font-size: 16px;
+          color: $c-s;
+        }
+      }
+
+      .cart {
+        a {
+          height: 48px;
+          width: 48px;
+        }
+      }
 
       .lang-dropdown {
         display: flex;
@@ -55,13 +73,6 @@
 
         &:active {
           background-color: #f1b11d;
-        }
-      }
-
-      .cart {
-        a {
-          height: 48px;
-          width: 48px;
         }
       }
 
@@ -97,8 +108,8 @@
     .categories-trigger {
       display: flex;
       align-items: center;
+      font-weight: 500;
       gap: 14px;
-      font-family: var(--font-ExpoArabic);
       border: none;
     }
 
@@ -137,8 +148,12 @@
         }
 
         &.subCategories {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 18px;
+
           li {
-            color: #484e51;
+            color: $c-f-s;
           }
         }
       }

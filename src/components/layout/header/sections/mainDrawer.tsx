@@ -1,7 +1,7 @@
 // Components
 import Link from "next/link";
 import { Drawer, Avatar } from "antd";
-import ButtonS1 from "@/components/tools/buttons/buttonS1/buttonS1";
+import ButtonS1 from "@/components/tools/buttons/buttonS1";
 
 // Hooks
 import { usePathname } from "next/navigation";

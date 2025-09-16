@@ -1,20 +1,31 @@
 {
   "metadata": {},
   "Common": {
-    "SAR": "ريال",
-    "Add to cart": "إضافة للسلة"
+    "Add to cart": "إضافة للسلة",
+    "SAR": "ريال"
   },
   "Header": {
     "Language": "اللغة",
     "en": "الانجليزية",
     "ar": "العربية",
-    "All Categories": "جميع الأقسام"
+    "All Categories": "جميع الأقسام",
+    "Login": "تسجيل الدخول",
+    "Welcome Back": "مرحبًا بعودتك",
+    "Login to your account to continue": "قم بتسجيل الدخول إلى حسابك للمواصلة",
+    "Forgot your password?": "هل نسيت كلمة المرور ؟",
+    "Reset password": "اعادة تعيين كلمة المرور",
+    "Reset description": "لكي تتمكن من اعادة تعيين كلمة المرور من فضلك اكتب البريد الالكتروني المسجل لدينا في الموقع، سيتم ارسال رسالة على البريد الخاص بك بكود اعادة التعيين."
   },
   "Footer": {
     "Al Mukhlif Oud": "المخلف للعود",
     "© All rights reserved to Al Mukhlif Oud": "© جميع الحقوق محفوظة لـ المخلف للعود"
   },
-  "Forms": {},
+  "Forms": {
+    "Email": "البريد الإلكتروني",
+    "Password": "كلمة المرور",
+    "required": "مطلوب",
+    "Login": "تسجيل الدخول"
+  },
   "Home": {
     "Best seller": "الأكثر مبيعاً",
     "New arrival": "وصل حديثا",
