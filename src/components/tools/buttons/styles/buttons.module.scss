@@ -8,18 +8,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #e7eaee;
     border-radius: 8px;
     font-size: 14px;
     font-weight: 500;
     color: #000;
     transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    background-color: #ffff;
-
-    &.iconBtn {
-      height: 44px;
-      width: 44px;
-    }
 
     &:hover {
       border-color: #f1b11d !important;

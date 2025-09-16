@@ -54,8 +54,8 @@ const LangSwitcher = () => {
       className="lang-dropdown"
       disabled={isPending}
     >
-      <a onClick={(e) => e.preventDefault()}>
-        <Image src={langIcon} alt={t("Language")} />
+      <a onClick={(e) => e.preventDefault()} className="flexCenter">
+        <Image height={22} width={22} src={langIcon} alt={t("Language")} />
       </a>
     </Dropdown>
   )

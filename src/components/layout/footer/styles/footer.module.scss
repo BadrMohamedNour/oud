@@ -1,5 +1,8 @@
+@use "@/styles/_variables" as *;
+@use "@/styles/_mixins" as *;
+
 .footer :global {
-  background-color: #341547;
+  background-color: $c-s;
   padding-top: 71px;
   padding-bottom: 40px;
   display: flex;
@@ -27,7 +30,8 @@
       }
     }
 
-    .links {
+    .links,
+    .categories {
       h3 {
         font-size: 20px;
         font-weight: 500;
@@ -52,6 +56,20 @@
 
       @media (min-width: 1200px) {
         flex-direction: row;
+      }
+    }
+
+    .categories {
+      ul {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px 16px;
+      }
+
+      @include large {
+        ul {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
     }
 
@@ -156,7 +174,18 @@
     text-align: center;
   }
 
-  @media (max-width: 900px) {
+  @include medium {
+    padding-top: 36px;
+    padding-bottom: 20px;
+
+    .content,
+    .payment-info {
+      padding-bottom: 45px;
+      margin-bottom: 20px;
+    }
+  }
+
+  @include small {
     display: none;
   }
 }

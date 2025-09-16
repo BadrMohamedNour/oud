@@ -59,6 +59,7 @@ ul {
 a {
   text-decoration: none;
   color: initial;
+  cursor: pointer;
 }
 
 img {
@@ -76,7 +77,7 @@ button {
   padding-left: 100px;
   overflow-x: hidden;
 
-  @include small {
+  @include medium {
     padding-right: 50px;
     padding-left: 50px;
   }
@@ -90,6 +91,11 @@ button {
 .page {
   padding-top: 48px;
   padding-bottom: 48px;
+
+  @include medium {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
 }
 
 .error-page {
@@ -142,6 +148,12 @@ button {
     display: block;
     margin-top: 1.5rem;
   }
+}
+
+.flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 input {

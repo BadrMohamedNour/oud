@@ -14,6 +14,14 @@
     align-items: center;
     margin-bottom: 16px;
 
+    .logoMenu {
+      gap: 14px;
+
+      .menuBtn {
+        display: none;
+      }
+    }
+
     .logo {
       a {
         display: flex;
@@ -34,10 +42,7 @@
     }
 
     .actions {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 8px;
+      gap: 18px;
 
       .loginBtn {
         button {
@@ -48,49 +53,20 @@
           color: $c-s;
         }
       }
+    }
 
-      .cart {
-        a {
-          height: 48px;
-          width: 48px;
-        }
-      }
-
-      .lang-dropdown {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        height: 48px;
-        width: 48px;
-        cursor: pointer;
-        border: 1px solid #e7eaee;
-        border-radius: 8px;
-
-        &:hover {
-          border-color: #f1b11d;
-        }
-
-        &:active {
-          background-color: #f1b11d;
-        }
-      }
-
-      .menuBtn {
-        display: none;
-      }
-
-      @include small {
+    @include small {
+      .actions {
         gap: 16px;
 
         .cart,
         .auth {
           display: none;
         }
+      }
 
-        .menuBtn {
-          display: block;
-        }
+      .logoMenu .menuBtn {
+        display: flex;
       }
     }
   }

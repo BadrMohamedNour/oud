@@ -47,7 +47,7 @@
     }
 
     @include extraSmall {
-      height: 150px;
+      height: 180px;
     }
   }
 
@@ -66,6 +66,12 @@
         h2 {
           margin-bottom: 24px;
         }
+      }
+    }
+
+    @include large {
+      .sidebar-section {
+        display: none;
       }
     }
   }

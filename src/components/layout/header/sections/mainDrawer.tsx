@@ -1,55 +1,46 @@
 // Components
-import Link from "next/link";
-import { Drawer, Avatar } from "antd";
-import ButtonS1 from "@/components/tools/buttons/buttonS1";
+import Link from "next/link"
+import { Drawer, Avatar } from "antd"
+import ButtonS1 from "@/components/tools/buttons/buttonS1"
 
 // Hooks
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation"
+import { useEffect, useState } from "react"
 
 // Icons
-import { LeftOutlined, LoginOutlined, LogoutOutlined } from "@ant-design/icons";
+import { LeftOutlined, LoginOutlined, LogoutOutlined } from "@ant-design/icons"
+import { MdMenu } from "react-icons/md"
 
 // Style
-import style from "../styles/header.module.scss";
+import style from "../styles/header.module.scss"
 
-import { useAuth } from "@/context/auth-context";
-import { links, otherLinks, subLinks } from "./data";
-import ROUTES from "@/utils/routes";
+import { useAuth } from "@/context/auth-context"
+import { links, otherLinks, subLinks } from "./data"
+import ROUTES from "@/utils/routes"
 
 const MainDrawer: React.FC = () => {
-  const pathName = usePathname();
-  const [open, setOpen] = useState(false);
-  const [openSubLinks, setOpenSubLinks] = useState(false);
+  const pathName = usePathname()
+  const [open, setOpen] = useState(false)
+  const [openSubLinks, setOpenSubLinks] = useState(false)
   // const { user, isAuthenticated } = useAuth();
 
   useEffect(() => {
     if (open) {
-      setOpen(false);
+      setOpen(false)
     }
-  }, [pathName]);
+  }, [pathName])
 
   return (
     <>
-      <ButtonS1
-        type="btn"
-        styles="menuBtn"
-        text={<LeftOutlined style={{ fontSize: 16 }} />}
-        onClick={() =>
-          openSubLinks
-            ? setOpenSubLinks(false)
-            : setOpen((prevState) => !prevState)
-        }
-      />
-
-      <Drawer
-        open={open}
-        closeIcon={null}
-        mask={false}
-        placement="right"
-        width="100%"
-        rootClassName={style.mainDrawer}
+      <button
+        type="button"
+        className="menuBtn"
+        onClick={() => (openSubLinks ? setOpenSubLinks(false) : setOpen((prevState) => !prevState))}
       >
+        <MdMenu style={{ fontSize: 24 }} />
+      </button>
+
+      <Drawer open={open} closeIcon={null} mask={false} placement="right" width="100%" rootClassName={style.mainDrawer}>
         {false && (
           <>
             <div className="divider" />
@@ -82,9 +73,7 @@ const MainDrawer: React.FC = () => {
         <ul className="links">
           {otherLinks.map(({ label, icon }) => (
             <li key={label}>
-              <button
-                onClick={() => setOpenSubLinks((prevState) => !prevState)}
-              >
+              <button onClick={() => setOpenSubLinks((prevState) => !prevState)}>
                 <div className="content">
                   {icon}
                   <span>{label}</span>
@@ -137,7 +126,7 @@ const MainDrawer: React.FC = () => {
         </Drawer>
       </Drawer>
     </>
-  );
-};
+  )
+}
 
-export default MainDrawer;
+export default MainDrawer

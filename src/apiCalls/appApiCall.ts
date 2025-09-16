@@ -1,14 +1,11 @@
-import axios from "@/lib/axios";
-
-// Types
-import { StoreData } from "@/types/store";
+import axios from "@/lib/axios"
 
 export async function getAppData() {
   try {
-    const response = await axios.get(`/ping`);
+    const response = await axios.get(`/ping`)
 
-    return response.data.data;
-  } catch (error: any) {
-    console.log(error);
+    return response.data.data
+  } catch (error) {
+    console.log(error)
   }
 }

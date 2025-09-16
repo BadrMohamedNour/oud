@@ -1,18 +1,15 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import Link from "next/link"
+import Image from "next/image"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Pagination, Autoplay } from "swiper/modules"
 
-import { Banners } from "@/types/home";
+import { Banners } from "@/types/home"
 
-const BannerSection: React.FC<{ style?: string; banners: Banners }> = ({
-  style,
-  banners,
-}) => {
+const BannerSection: React.FC<{ style?: string; banners: Banners }> = ({ style, banners }) => {
   if (!banners?.length) {
-    return null;
+    return null
   }
 
   return (
@@ -35,7 +32,7 @@ const BannerSection: React.FC<{ style?: string; banners: Banners }> = ({
         ))}
       </Swiper>
     </div>
-  );
-};
+  )
+}
 
-export default BannerSection;
+export default BannerSection
