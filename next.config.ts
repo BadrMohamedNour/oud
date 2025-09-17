@@ -4,6 +4,8 @@ import type { NextConfig } from "next";
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
+  reactStrictMode: false,
+
   images: {
     remotePatterns: [
       {

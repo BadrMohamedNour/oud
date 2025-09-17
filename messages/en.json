@@ -23,8 +23,9 @@
   },
   "Forms": {
     "Email": "Email",
+    "Identifier": "Identifier",
     "Password": "Password",
-    "required": "Required",
+    "required": "required",
     "Login": "Login"
   },
   "Home": {

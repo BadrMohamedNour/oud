@@ -1,3 +1,5 @@
+"use client";
+
 import ButtonS1 from "@/components/tools/buttons/buttonS1";
 import { Modal } from "antd";
 import { useTranslations } from "next-intl";

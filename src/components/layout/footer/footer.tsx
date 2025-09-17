@@ -1,24 +1,22 @@
-import { memo } from "react"
-import Link from "next/link"
-import SocialMedia from "./sections/social-media"
-import PaymentInfo from "./sections/payment-info"
-import { StoreData } from "@/types/store"
-import { Categories } from "@/types/categories"
-import style from "./styles/footer.module.scss"
-import { useTranslations } from "next-intl"
-import Image from "next/image"
+import { memo } from "react";
+import Link from "next/link";
+import SocialMedia from "./sections/social-media";
+import { StoreData } from "@/types/store";
+import style from "./styles/footer.module.scss";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { Col, Row } from "antd";
 
 interface FooterProps {
-  appData: StoreData
-  categories: Categories
+  appData: StoreData;
 }
 
-const Footer: React.FC<FooterProps> = ({ appData, categories }) => {
-  const t = useTranslations("Footer")
+const Footer: React.FC<FooterProps> = ({ appData }) => {
+  const t = useTranslations("Footer");
 
   return (
     <footer className={`${style.footer} container`}>
-      <div className="content">
+      <div className="top-section">
         <div className="logo">
           <Link href="/">
             <Image
@@ -27,17 +25,6 @@ const Footer: React.FC<FooterProps> = ({ appData, categories }) => {
               alt={appData?.store_settings.company_logo.shown_name}
             />
           </Link>
-        </div>
-
-        <div className="categories">
-          <h3>{t("Categories")}</h3>
-          <ul>
-            {categories?.active_categories?.map(({ id, slug, name }) => (
-              <li key={id}>
-                <Link href={slug}>{name}</Link>
-              </li>
-            ))}
-          </ul>
         </div>
 
         <div className="links">
@@ -52,13 +39,99 @@ const Footer: React.FC<FooterProps> = ({ appData, categories }) => {
         </div>
 
         <SocialMedia storeContact={appData?.store_contacts} />
+
+        <ul className="logos">
+          <li>
+            <Image
+              src="/icons/payments/layer_2.svg"
+              width={145}
+              height={65}
+              alt="Logo 1"
+            />
+          </li>
+          <li>
+            <Image
+              src="/icons/payments/layer_1.svg"
+              width={85}
+              height={106}
+              alt="Logo 2"
+            />
+          </li>
+        </ul>
       </div>
 
-      <PaymentInfo storeSettings={appData?.store_settings} />
-
-      <p className="copyright text-center text-gray-500 text-sm">{t("© All rights reserved to Al Mukhlif Oud")}</p>
+      <div className="bottom-section ">
+        <Row gutter={[16, 16]}>
+          <Col md={8}>
+            <div className="flexCenter flexStart">
+              <ul className="payment-info">
+                <li>
+                  <Image
+                    src="/icons/payments/mada.svg"
+                    width={61}
+                    height={20}
+                    alt="Mada payment"
+                  />
+                </li>
+                <li>
+                  <Image
+                    src="/icons/payments/visa.svg"
+                    width={58}
+                    height={18}
+                    alt="Visa payment"
+                  />
+                </li>
+                <li>
+                  <Image
+                    src="/icons/payments/mastercard.svg"
+                    width={44}
+                    height={27}
+                    alt="Mastercard payment"
+                  />
+                </li>
+                <li>
+                  <Image
+                    src="/icons/payments/applepay.svg"
+                    width={59}
+                    height={24}
+                    alt="Apple Pay payment"
+                  />
+                </li>
+                <li>
+                  <Image
+                    src="/icons/payments/bank.svg"
+                    width={32}
+                    height={32}
+                    alt="Bank payment"
+                  />
+                </li>
+              </ul>
+            </div>
+          </Col>
+          <Col md={8}>
+            <div className="copyright flexCenter">
+              <p>{t("© All rights reserved to Al Mukhlif Oud")}</p>
+            </div>
+          </Col>
+          <Col md={8}>
+            <div className="details flexCenter flexEnd">
+              <span>
+                {
+                  appData.store_settings?.commercial_registration_number
+                    .shown_name
+                }
+                :{appData.store_settings?.commercial_registration_number.value}
+              </span>
+              <span>
+                {appData.store_settings?.tax_number.shown_name}:
+                {appData.store_settings?.tax_number.value}
+              </span>
+            </div>
+          </Col>
+        </Row>
+      </div>
     </footer>
-  )
-}
+  );
+};
 
-export default memo(Footer)
+export default memo(Footer);

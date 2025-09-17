@@ -6,6 +6,7 @@ import allUrl from "../configs/allUrl.json";
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: allUrl.apiUrl,
   headers: {
+    Accept: "application/json",
     "Accept-Language": Cookies.get("NEXT_LOCALE") || "ar",
   },
 });
@@ -20,7 +21,7 @@ axiosInstance.interceptors.request.use(
       : Cookies.get("NEXT_LOCALE") || "ar";
 
     config.headers = config.headers || {};
-    config.headers.Authorization = "Bearer ";
+    //config.headers.Authorization = "Bearer ";
     config.headers["Accept-Language"] = locale;
 
     return config;

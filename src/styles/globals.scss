@@ -77,7 +77,7 @@ button {
   padding-left: 100px;
   overflow-x: hidden;
 
-  @include medium {
+  @include large {
     padding-right: 50px;
     padding-left: 50px;
   }
@@ -156,6 +156,10 @@ button {
   justify-content: center;
 }
 
-input {
-  border-radius: 4px;
+.flexStart {
+  justify-content: start;
+}
+
+.flexEnd {
+  justify-content: end;
 }

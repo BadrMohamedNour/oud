@@ -45,7 +45,7 @@ const LoginForm: React.FC = () => {
         validateStatus={apiErrors?.errors?.email ? "error" : undefined}
         help={apiErrors?.errors?.email}
       >
-        <Input className="input" placeholder={t("Email")} />
+        <Input className="input" placeholder={t("Identifier")} />
       </Form.Item>
 
       <Form.Item<FieldType>

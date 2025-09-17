@@ -13,6 +13,8 @@ import { CartProvider } from "@/context/cart-context";
 // Wrrapers
 import Providers from "@/store/provider";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 
 // Types
 interface RootLayoutProps {
@@ -27,7 +29,8 @@ export default async function RootLayout({
   children,
   params: { locale },
 }: Readonly<RootLayoutProps>) {
-  const [appData, categories] = await Promise.all([
+  const [messages, appData, categories] = await Promise.all([
+    getMessages(),
     getAppData(),
     getCategories(),
   ]);
@@ -35,16 +38,18 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body>
-        <Providers>
-          <CartProvider>
-            <AntdRegistry>
-              <Header categories={categories} />
-              {children}
-              <Footer categories={categories} appData={appData} />
-              <MobileFooter />
-            </AntdRegistry>
-          </CartProvider>
-        </Providers>
+        <NextIntlClientProvider messages={messages}>
+          <Providers>
+            <CartProvider>
+              <AntdRegistry>
+                <Header categories={categories} />
+                {children}
+                <Footer appData={appData} />
+                <MobileFooter />
+              </AntdRegistry>
+            </CartProvider>
+          </Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -4,18 +4,17 @@
 .footer :global {
   background-color: $c-s;
   padding-top: 71px;
-  padding-bottom: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  .content {
+  .top-section {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    padding-bottom: 85px;
-    margin-bottom: 40px;
+    padding-bottom: 45px;
+    margin-bottom: 45px;
     border-bottom: 1px solid #4b1e66;
 
     .logo {
@@ -73,6 +72,18 @@
       }
     }
 
+    .logos {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+
+      @media (min-width: 1200px) {
+        flex-direction: row;
+      }
+    }
+
     .social-media {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(48px, auto));
@@ -108,81 +119,53 @@
     }
   }
 
-  .payment-info {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  .bottom-section {
     gap: 16px;
-    padding-bottom: 85px;
-    margin-bottom: 40px;
-    border-bottom: 1px solid #4b1e66;
+    padding-bottom: 25px;
+
+    .payment-info {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border: 1px solid #4b1e66;
+      padding: 7px 19px;
+      border-radius: 12px;
+      height: 56px;
+    }
 
     .details {
-      display: flex;
-      flex-direction: column;
+      height: 100%;
+      gap: 8px;
 
-      .text-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-bottom: 40px;
-
-        span {
-          font-size: 16px;
-          font-weight: 500;
-          color: #fff;
-
-          &:last-of-type {
-            margin-right: 37px;
-          }
-        }
-      }
-
-      ul {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-        border: 1px solid #4b1e66;
-        padding: 7px 19px;
-        border-radius: 12px;
-        min-width: 505px;
-        height: 56px;
+      span {
+        font-size: 16px;
+        font-weight: 500;
+        color: #fff;
       }
     }
 
-    .logos {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
+    .copyright {
+      height: 100%;
 
-      @media (min-width: 1200px) {
-        flex-direction: row;
+      p {
+        font-size: 16px;
+        font-weight: 500;
+        color: #fff;
+        text-align: center;
       }
     }
-  }
 
-  .copyright {
-    font-size: 16px;
-    font-weight: 500;
-    color: #fff;
-    margin-right: 37px;
-    text-align: center;
+    @include large {
+      .details span {
+        font-size: 14px;
+      }
+    }
   }
 
   @include medium {
     padding-top: 36px;
-    padding-bottom: 20px;
-
-    .content,
-    .payment-info {
-      padding-bottom: 45px;
-      margin-bottom: 20px;
-    }
   }
 
   @include small {
