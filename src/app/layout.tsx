@@ -7,6 +7,10 @@ import "swiper/css/pagination";
 import "@/styles/globals.scss";
 import "@/styles/sections.scss";
 
+//Hooks
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+
 // Types
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -22,9 +26,12 @@ const tajawal = Tajawal({
 export default async function RootLayout({
   children,
 }: Readonly<RootLayoutProps>) {
+  const messages = await getMessages();
   return (
     <html>
-      <body className={tajawal.className}>{children}</body>
+      <NextIntlClientProvider messages={messages}>
+        <body className={tajawal.className}>{children}</body>
+      </NextIntlClientProvider>
     </html>
   );
 }

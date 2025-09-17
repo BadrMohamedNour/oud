@@ -1,12 +1,13 @@
-import { memo } from "react"
-import { Swiper, SwiperSlide } from "swiper/react"
-import ProductCard from "@/components/tools/productCard/productCard"
-import { Product } from "@/types/home"
-import { Autoplay } from "swiper/modules"
+import { memo } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import ProductCard from "@/components/tools/productCard/productCard";
+import { Product } from "@/types/home";
+import { Autoplay } from "swiper/modules";
+import { Skeleton } from "antd";
 
 interface ProductsSectionProps {
-  title: string
-  products: Product[]
+  title: string;
+  products: Product[];
 }
 
 const SWIPER_BREAKPOINTS = {
@@ -26,32 +27,40 @@ const SWIPER_BREAKPOINTS = {
     slidesPerView: 4,
     spaceBetween: 18,
   },
-} as const
+} as const;
 
-const ProductsSection: React.FC<ProductsSectionProps> = memo(({ title, products }) => {
-  if (!products?.length) {
-    return null
+const ProductsSection: React.FC<ProductsSectionProps> = memo(
+  ({ title, products }) => {
+    if (!products?.length) {
+      return null;
+    }
+
+    return (
+      <section className="products-section">
+        {!products ? (
+          <Skeleton.Node active rootClassName="skeleton" />
+        ) : (
+          <>
+            <h2>{title}</h2>
+            <Swiper
+              breakpoints={SWIPER_BREAKPOINTS}
+              pagination={false}
+              modules={[Autoplay]}
+              autoplay={{ delay: 4000, disableOnInteraction: false }}
+            >
+              {products.map((product) => (
+                <SwiperSlide key={product.id}>
+                  <ProductCard product={product} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </>
+        )}
+      </section>
+    );
   }
+);
 
-  return (
-    <section className="products-section">
-      <h2>{title}</h2>
-      <Swiper
-        breakpoints={SWIPER_BREAKPOINTS}
-        pagination={false}
-        modules={[Autoplay]}
-        autoplay={{ delay: 4000, disableOnInteraction: false }}
-      >
-        {products.map((product) => (
-          <SwiperSlide key={product.id}>
-            <ProductCard product={product} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </section>
-  )
-})
+ProductsSection.displayName = "ProductsSection";
 
-ProductsSection.displayName = "ProductsSection"
-
-export default ProductsSection
+export default ProductsSection;

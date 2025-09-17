@@ -1,30 +1,44 @@
 import ButtonS1 from "@/components/tools/buttons/buttonS1";
 import { Modal } from "antd";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { FC } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "./forms/form";
+import { setIsModalVisibleForget } from "@/store/slices/auth/forgetPasswordSlice";
+import { setIsModalVisibleLogin } from "@/store/slices/auth/loginSlice";
+import type { RootState } from "@/store/store";
 
-const ModalForgetPassword = () => {
+const ModalForgetPassword: FC = () => {
+  const dispatch = useDispatch();
   const t = useTranslations("Header");
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isModalVisibleForget } = useSelector(
+    (state: RootState) => state.forgetPassword
+  );
 
-  const handleOpenModal = () => setIsModalOpen(true);
-  const handleCloseModal = () => setIsModalOpen(false);
+  const handleCloseModal = () => {
+    dispatch(setIsModalVisibleForget(false));
+  };
+
+  const handleForgetPasswordBtn = () => {
+    dispatch(setIsModalVisibleLogin(false));
+    dispatch(setIsModalVisibleForget(true));
+  };
 
   return (
     <>
-      <ButtonS1
-        styles="loginBtn"
-        type="btn"
-        text={t("Forgot your password?")}
-        onClick={handleOpenModal}
-      />
+      <button
+        className="loginBtn"
+        type="button"
+        onClick={handleForgetPasswordBtn}
+      >
+        {t("Forgot your password?")}
+      </button>
       <Modal
         title={null}
         footer={null}
         centered
         className="modalLogin"
-        open={isModalOpen}
+        open={isModalVisibleForget}
         onCancel={handleCloseModal}
         width={400}
       >

@@ -1,60 +1,60 @@
 // Components
-import Header from "@/components/layout/header/header"
-import Footer from "@/components/layout/footer/footer"
-import MobileFooter from "@/components/layout/mobile-footer/mobile-footer"
+import Header from "@/components/layout/header/header";
+import Footer from "@/components/layout/footer/footer";
+import MobileFooter from "@/components/layout/mobile-footer/mobile-footer";
 
 // Actions
-import { getAppData } from "@/apiCalls/appApiCall"
-import { getCategories } from "@/apiCalls/categoriesApiCall"
+import { getAppData } from "@/apiCalls/appApiCall";
+import { getCategories } from "@/apiCalls/categoriesApiCall";
 
 // Context
-import { CartProvider } from "@/context/cart-context"
+import { CartProvider } from "@/context/cart-context";
 
 // Wrrapers
-import Providers from "@/store/provider"
-import { NextIntlClientProvider } from "next-intl"
-import { AntdRegistry } from "@ant-design/nextjs-registry"
-
-//Hooks
-import { getMessages } from "next-intl/server"
+import Providers from "@/store/provider";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 
 // Types
 interface RootLayoutProps {
-  children: React.ReactNode
-  params: { locale: string }
+  children: React.ReactNode;
+  params: { locale: string };
 }
 
 // Constants
-const METADATA_BASE_URL = "https://almokhlifoud.com"
+const METADATA_BASE_URL = "https://almokhlifoud.com";
 
-export default async function RootLayout({ children, params: { locale } }: Readonly<RootLayoutProps>) {
-  const [messages, appData, categories] = await Promise.all([getMessages(), getAppData(), getCategories()])
+export default async function RootLayout({
+  children,
+  params: { locale },
+}: Readonly<RootLayoutProps>) {
+  const [appData, categories] = await Promise.all([
+    getAppData(),
+    getCategories(),
+  ]);
 
   return (
     <html lang={locale}>
       <body>
-        <NextIntlClientProvider messages={messages}>
-          <Providers>
-            <CartProvider>
-              <AntdRegistry>
-                <Header categories={categories} />
-                {children}
-                <Footer categories={categories} appData={appData} />
-                <MobileFooter />
-              </AntdRegistry>
-            </CartProvider>
-          </Providers>
-        </NextIntlClientProvider>
+        <Providers>
+          <CartProvider>
+            <AntdRegistry>
+              <Header categories={categories} />
+              {children}
+              <Footer categories={categories} appData={appData} />
+              <MobileFooter />
+            </AntdRegistry>
+          </CartProvider>
+        </Providers>
       </body>
     </html>
-  )
+  );
 }
 
 export async function generateMetadata() {
   try {
-    const { store_settings } = await getAppData()
-    const storeName = store_settings.store_name.value
-    const favicon = store_settings.favicon.value
+    const { store_settings } = await getAppData();
+    const storeName = store_settings.store_name.value;
+    const favicon = store_settings.favicon.value;
 
     return {
       title: storeName,
@@ -77,8 +77,8 @@ export async function generateMetadata() {
         creator: "",
         images: [],
       },
-    }
+    };
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
