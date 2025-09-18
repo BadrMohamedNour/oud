@@ -1,35 +1,41 @@
 // Components
-import Header from "@/components/layout/header/header"
-import Footer from "@/components/layout/footer/footer"
-import MobileFooter from "@/components/layout/mobile-footer/mobile-footer"
+import Header from "@/components/layout/header/header";
+import Footer from "@/components/layout/footer/footer";
+import MobileFooter from "@/components/layout/mobile-footer/mobile-footer";
 
 // Actions
-import { getAppData } from "@/apiCalls/appApiCall"
-import { getCategories } from "@/apiCalls/categoriesApiCall"
+import { getAppData } from "@/apiCalls/appApiCall";
+import { getCategories } from "@/apiCalls/categoriesApiCall";
 
 // Context
-import { CartProvider } from "@/context/cart-context"
+import { CartProvider } from "@/context/cart-context";
 
 // Wrrapers
-import Providers from "@/store/provider"
-import { AntdRegistry } from "@ant-design/nextjs-registry"
+import Providers from "@/store/provider";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 
 // Styles
-import "swiper/css"
-import "swiper/css/pagination"
-import "@/styles/globals.scss"
-import "@/styles/sections.scss"
+import "swiper/css";
+import "swiper/css/pagination";
+import "@/styles/globals.scss";
+import "@/styles/sections.scss";
+import { getAppSeo } from "@/apiCalls/seoApiCall ";
 
 // Types
 interface RootLayoutProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 // Constants
-const METADATA_BASE_URL = "https://almokhlifoud.com"
+const METADATA_BASE_URL = "https://almokhlifoud.com";
 
-export default async function LocaleLayout({ children }: Readonly<RootLayoutProps>) {
-  const [appData, categories] = await Promise.all([getAppData(), getCategories()])
+export default async function LocaleLayout({
+  children,
+}: Readonly<RootLayoutProps>) {
+  const [appData, categories] = await Promise.all([
+    getAppData(),
+    getCategories(),
+  ]);
   return (
     <Providers>
       <CartProvider>
@@ -41,38 +47,38 @@ export default async function LocaleLayout({ children }: Readonly<RootLayoutProp
         </AntdRegistry>
       </CartProvider>
     </Providers>
-  )
+  );
 }
 
 export async function generateMetadata() {
   try {
-    const { store_settings } = await getAppData()
-    const storeName = store_settings.store_name.value
-    const favicon = store_settings.favicon.value
-
+    const seo = await getAppSeo();
+    const title = seo.title;
+    const description = seo.meta_description;
+    const image = seo.image;
     return {
-      title: storeName,
-      description: storeName,
+      title: title,
+      description: description,
       metadataBase: new URL(METADATA_BASE_URL),
-      icons: { icon: favicon },
-      keywords: [],
+      icons: { icon: "/icons/favIcon.png" },
+      keywords: seo.meta_keywords,
       openGraph: {
-        title: storeName,
-        description: "",
-        images: [],
+        title: title,
+        description: description,
+        images: [image],
         url: METADATA_BASE_URL,
         type: "website",
       },
       twitter: {
         card: "summary_large_image",
-        title: storeName,
-        description: "",
-        site: storeName,
-        creator: "",
-        images: [],
+        title: title,
+        description: description,
+        site: title,
+        creator: title,
+        images: [image],
       },
-    }
+    };
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }

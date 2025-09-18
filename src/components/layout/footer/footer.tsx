@@ -32,7 +32,7 @@ const Footer: React.FC<FooterProps> = ({ appData }) => {
           <ul>
             {appData?.store_policies?.map(({ key, name, value }) => (
               <li key={key}>
-                <Link href={value}>{name}</Link>
+                <Link href={value || ""}>{name}</Link>
               </li>
             ))}
           </ul>

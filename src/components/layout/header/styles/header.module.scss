@@ -45,12 +45,15 @@
       gap: 18px;
 
       .loginBtn {
-        button {
-          height: 38px;
-          border: 1px solid $c-s;
-          border-radius: 30px;
-          font-size: 16px;
-          color: $c-s;
+        height: 38px;
+        border: 1px solid $c-s;
+        border-radius: 30px;
+        font-size: 16px;
+        color: $c-s;
+
+        &:hover {
+          color: #f1b11d;
+          border-color: #f1b11d;
         }
       }
     }
@@ -71,72 +74,83 @@
     }
   }
 
+  // .categories {
+  //   position: relative;
+
+  //   .categories-trigger:hover ~ .categories-menu,
+  //   .categories-trigger:hover ~ .overlay,
+  //   .categories-menu:hover,
+  //   .categories-menu:hover ~ .overlay {
+  //     display: block;
+  //   }
+
+  //   .categories-trigger {
+  //     display: flex;
+  //     align-items: center;
+  //     font-weight: 500;
+  //     gap: 14px;
+  //     border: none;
+  //   }
+
+  //   .overlay {
+  //     display: none;
+  //     position: fixed;
+  //     inset: 0;
+  //     z-index: -1;
+  //     height: 100%;
+  //     width: 100%;
+  //     background: rgba(0, 0, 0, 0.6);
+  //   }
+
+  //   .categories-menu {
+  //     display: none;
+  //     min-height: 426px;
+  //     width: 100%;
+  //     position: absolute;
+  //     right: 0;
+  //     z-index: 10;
+  //     background: #fff;
+  //     padding: 14px;
+
+  //     ul {
+  //       li {
+  //         margin-bottom: 4px;
+
+  //         a {
+  //           font-weight: 500;
+  //           color: #000;
+
+  //           &:hover {
+  //             font-weight: 600;
+  //           }
+  //         }
+  //       }
+
+  //       &.subCategories {
+  //         display: grid;
+  //         grid-template-columns: repeat(4, 1fr);
+  //         gap: 18px;
+
+  //         li {
+  //           color: $c-f-s;
+  //         }
+  //       }
+  //     }
+  //   }
+
+  //   @include small {
+  //     display: none;
+  //   }
+  // }
+
   .categories {
-    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 
-    .categories-trigger:hover ~ .categories-menu,
-    .categories-trigger:hover ~ .overlay,
-    .categories-menu:hover,
-    .categories-menu:hover ~ .overlay {
-      display: block;
-    }
-
-    .categories-trigger {
-      display: flex;
-      align-items: center;
-      font-weight: 500;
-      gap: 14px;
-      border: none;
-    }
-
-    .overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      height: 100%;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.6);
-    }
-
-    .categories-menu {
-      display: none;
-      min-height: 426px;
-      width: 100%;
-      position: absolute;
-      right: 0;
-      z-index: 10;
-      background: #fff;
-      padding: 14px;
-
-      ul {
-        li {
-          margin-bottom: 4px;
-
-          a {
-            font-weight: 500;
-            color: #000;
-
-            &:hover {
-              font-weight: 600;
-            }
-          }
-        }
-
-        &.subCategories {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 18px;
-
-          li {
-            color: $c-f-s;
-          }
-        }
-      }
-    }
-
-    @include small {
-      display: none;
+    .dropdwonS1 {
+      gap: 8px;
+      color: $c-s;
     }
   }
 }

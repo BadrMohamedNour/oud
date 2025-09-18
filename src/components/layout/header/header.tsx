@@ -1,28 +1,30 @@
 // Styles
-import style from "./styles/header.module.scss"
+import style from "./styles/header.module.scss";
 
 // Components
-import { Badge } from "antd"
-import Link from "next/link"
-import MainDrawer from "@/components/layout/header/sections/mainDrawer"
-import ButtonS1 from "@/components/tools/buttons/buttonS1"
-import LangSwitcher from "./sections/langSwitcher"
-import CategoriesMenu from "./sections/categoriesMenu"
-import ModalLogin from "./sections/modals/modalLogin/modalLogin"
+import { Badge } from "antd";
+import Link from "next/link";
+import MainDrawer from "@/components/layout/header/sections/mainDrawer";
+import ButtonS1 from "@/components/tools/buttons/buttonS1";
+import LangSwitcher from "./sections/langSwitcher";
+import CategoriesMenu from "./sections/categories";
+import ModalLogin from "./sections/modals/modalLogin/modalLogin";
 
 // Images & Icons
-import SvgLogo from "@/assets/svg/logo"
-import SvgUser from "@/assets/svg/user"
-import SvgLogoText from "@/assets/svg/logoText"
-import SvgShoppingBag from "@/assets/svg/shoppingBag"
+import SvgLogo from "@/assets/svg/logo";
+import SvgUser from "@/assets/svg/user";
+import SvgLogoText from "@/assets/svg/logoText";
+import SvgShoppingBag from "@/assets/svg/shoppingBag";
 
 // Hooks
-import { useCart } from "@/hook/use-cart"
+import { cookies } from "next/headers";
 
 // Types
-import { Categories } from "@/types/categories"
+import { Categories } from "@/types/categories";
+import { getCookie } from "@/utils/getCookies";
 
-const Header: React.FC<{ categories: Categories }> = ({ categories }) => {
+const Header: React.FC<{ categories: Categories }> = async ({ categories }) => {
+  const MToken = await getCookie("MToken");
   return (
     <header className={`${style.header} container`}>
       <div className="content">
@@ -43,7 +45,13 @@ const Header: React.FC<{ categories: Categories }> = ({ categories }) => {
 
         <div className="actions flexCenter">
           <div className="auth">
-            {false ? <ButtonS1 path="/profile" styles="login" text={<SvgUser />} /> : <ModalLogin />}
+            {MToken ? (
+              <Link href="/profile" className="flexCenter">
+                <SvgUser />
+              </Link>
+            ) : (
+              <ModalLogin />
+            )}
           </div>
 
           <Badge count={0}>
@@ -57,7 +65,7 @@ const Header: React.FC<{ categories: Categories }> = ({ categories }) => {
       </div>
       {/* <CategoriesMenu categories={categories} /> */}
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

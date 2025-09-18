@@ -1,6 +1,17 @@
 @use "@/styles/_variables" as *;
 @use "@/styles/_mixins" as *;
 
+.headerCategories {
+  ul li {
+    &:hover {
+      a {
+        font-weight: 500;
+        color: $c-s !important;
+      }
+    }
+  }
+}
+
 .skeleton {
   display: block !important;
   height: 100%;
@@ -64,14 +75,48 @@
           color: $c-f-s;
         }
       }
+
+      .ant-form-item-explain-error {
+        margin-bottom: 10px;
+      }
     }
 
-    .footer button {
-      display: block;
-      width: fit-content;
-      margin: 0 auto;
-      margin-top: 24px;
-      color: $c-f-s;
+    .footer {
+      .magicLinks {
+        text-align: center;
+        small {
+          font-size: 16px;
+          font-weight: 500;
+          color: $c-s;
+        }
+
+        ul {
+          gap: 16px;
+
+          button {
+            height: 48px;
+            width: 48px;
+            border: 1px solid $c-s;
+            border-radius: 50%;
+            transition: all 0.2s ease-out;
+
+            &:hover {
+              border-color: #f1b11d;
+            }
+
+            img {
+              margin-top: 1px;
+            }
+          }
+        }
+      }
+      button {
+        display: block;
+        width: fit-content;
+        margin: 0 auto;
+        margin-top: 24px;
+        color: $c-f-s;
+      }
     }
   }
 }

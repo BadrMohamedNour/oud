@@ -11,8 +11,11 @@
     "All Categories": "جميع الأقسام",
     "Login": "تسجيل الدخول",
     "Welcome Back": "مرحبًا بعودتك",
+    "Login with code": "تسجيل الدخول بكود",
     "Login to your account to continue": "قم بتسجيل الدخول إلى حسابك للمواصلة",
     "Forgot your password?": "هل نسيت كلمة المرور ؟",
+    "Verification code": "رمز التحقق",
+    "Enter 4 digits number that you received": "أدخل الرقم المكون من 4 أرقام الذي تلقيته",
     "Reset password": "اعادة تعيين كلمة المرور",
     "Reset description": "لكي تتمكن من اعادة تعيين كلمة المرور من فضلك اكتب البريد الالكتروني المسجل لدينا في الموقع، سيتم ارسال رسالة على البريد الخاص بك بكود اعادة التعيين."
   },
@@ -22,10 +25,13 @@
     "© All rights reserved to Al Mukhlif Oud": "© جميع الحقوق محفوظة لـ المخلف للعود"
   },
   "Forms": {
-    "Email": "البريد الإلكتروني",
+    "email": "البريد الإلكتروني",
+    "phone": "رقم الجوال",
     "Identifier": "المعرف",
+    "whatsapp": "واتساب",
     "Password": "كلمة المرور",
     "required": "مطلوب",
+    "Mobile number must be 10 digits long and start with 966": "رقم الجوال يجب أن يكون مكونًا من 10 أرقام ويبدأ بـ 966",
     "Login": "تسجيل الدخول"
   },
   "Home": {
