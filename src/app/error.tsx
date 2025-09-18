@@ -1,18 +1,18 @@
-"use client";
+"use client"
 
 // Components
-import Link from "next/link";
+import Link from "next/link"
 
 interface ErrorPageProps {
-  error: Error;
-  reset: () => void;
+  error: Error
+  reset: () => void
 }
 
 // Hooks
-import { useTranslations } from "next-intl";
+import { useTranslations } from "next-intl"
 
 const ErrorPage = ({ error, reset }: ErrorPageProps) => {
-  const t = useTranslations("Error");
+  const t = useTranslations("Error")
 
   return (
     <main className="error-page">
@@ -27,7 +27,7 @@ const ErrorPage = ({ error, reset }: ErrorPageProps) => {
         {t("Go To Home")}
       </Link>
     </main>
-  );
-};
+  )
+}
 
-export default ErrorPage;
+export default ErrorPage

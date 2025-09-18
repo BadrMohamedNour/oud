@@ -24,6 +24,7 @@ const LangSwitcher = () => {
   const switchLanguage = (nextLocale: Locale) => {
     startTransition(() => {
       router.replace(pathname, { locale: nextLocale })
+      router.refresh()
     })
   }
 
