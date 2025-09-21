@@ -13,9 +13,17 @@
     "Welcome Back": "مرحبًا بعودتك",
     "Login with code": "تسجيل الدخول بكود",
     "Login to your account to continue": "قم بتسجيل الدخول إلى حسابك للمواصلة",
+    "OR": "أو",
     "Forgot your password?": "هل نسيت كلمة المرور ؟",
+    "Register": "التسجيل",
+    "Create a new account": "إنشاء حساب جديد",
+    "Create a new account and enjoy all Features": "قم بإنشاء حساب جديد واستمتع بجميع الميزات",
     "Verification code": "رمز التحقق",
     "Enter 4 digits number that you received": "أدخل الرقم المكون من 4 أرقام الذي تلقيته",
+    "Why it didn't arrive!! resend": "لماذا لم يصل!! إعادة الإرسال",
+    "Please enter the OTP": " الرجاء إدخال رمز التحقق",
+    "Resend": "إعادة الإرسال",
+    "Send": "ارسال",
     "Reset password": "اعادة تعيين كلمة المرور",
     "Reset description": "لكي تتمكن من اعادة تعيين كلمة المرور من فضلك اكتب البريد الالكتروني المسجل لدينا في الموقع، سيتم ارسال رسالة على البريد الخاص بك بكود اعادة التعيين."
   },
@@ -25,7 +33,9 @@
     "© All rights reserved to Al Mukhlif Oud": "© جميع الحقوق محفوظة لـ المخلف للعود"
   },
   "Forms": {
+    "Name": "الاسم",
     "email": "البريد الإلكتروني",
+    "invalid email": "بريد إلكتروني غير صالح",
     "phone": "رقم الجوال",
     "Identifier": "المعرف",
     "whatsapp": "واتساب",

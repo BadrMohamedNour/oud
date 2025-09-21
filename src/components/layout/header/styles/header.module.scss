@@ -44,16 +44,32 @@
     .actions {
       gap: 18px;
 
-      .loginBtn {
-        height: 38px;
-        border: 1px solid $c-s;
-        border-radius: 30px;
-        font-size: 16px;
-        color: $c-s;
+      .auth > div {
+        gap: 20px;
 
-        &:hover {
-          color: #f1b11d;
-          border-color: #f1b11d;
+        .loginBtn {
+          height: 38px;
+          width: 154px;
+          border: 1px solid $c-s;
+          border-radius: 30px;
+          font-size: 16px;
+          color: $c-s;
+
+          &:hover {
+            color: $c-t;
+            border-color: $c-t;
+          }
+
+          &:last-of-type {
+            background-color: $c-s;
+            color: #fff;
+
+            &:hover {
+              background-color: $c-t;
+              border-color: $c-t;
+              color: #fff;
+            }
+          }
         }
       }
     }

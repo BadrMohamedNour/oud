@@ -5,7 +5,7 @@ import Link from "next/link";
 
 // Icons
 import SvgHome from "@/assets/svg/home";
-import SvgShoppingBag from "@/assets/svg/shoppingBag";
+// import SvgShoppingBag from "@/assets/svg/shoppingBag";
 import SvgProducts from "@/assets/svg/products";
 import SvgUser from "@/assets/svg/user";
 
@@ -23,7 +23,7 @@ export const MobileFooterData = [
     text: "الرئيسية",
   },
   {
-    icon: <SvgShoppingBag color="#484E51" />,
+    // icon: <SvgShoppingBag color="#484E51" />,
     title: "السلة",
     path: "/cart",
     text: "السلة",

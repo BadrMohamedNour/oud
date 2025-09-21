@@ -64,7 +64,7 @@ interface ApiError {
 interface LoginState {
   loading: boolean;
   apiErrors: ApiError | null;
-  isModalVisibleLogin: boolean;
+  isModalVisibleForget: boolean;
   isModalVisibleMagicLink: boolean;
   magicLinks: MagicLinks | null;
   MagicLinkType: string | undefined;
@@ -74,9 +74,8 @@ interface LoginState {
   loginStep: number;
 }
 
-interface LoginPayload {
-  identifier: string;
-  password: string;
+interface forgetPasswordPayload {
+  email: string;
 }
 
 interface OtpPayload {
@@ -115,7 +114,7 @@ const handleApiError = (error: unknown): ApiError => {
 const initialState: LoginState = {
   loading: false,
   apiErrors: null,
-  isModalVisibleLogin: false,
+  isModalVisibleForget: false,
   isModalVisibleMagicLink: false,
   magicLinks: null,
   MagicLinkType: "email",
@@ -126,57 +125,14 @@ const initialState: LoginState = {
 };
 
 // Async thunks
-export const loginThunk = createAsyncThunk<
+export const forgetPasswordThunk = createAsyncThunk<
   LoginResponse,
-  LoginPayload,
+  forgetPasswordPayload,
   { rejectValue: ApiError }
->("auth/login", async (payload, { rejectWithValue }) => {
+>("auth/forgot-password", async (payload, { rejectWithValue }) => {
   try {
-    const response = await axiosInstance.post<LoginResponse>("/login", payload);
-    return response.data;
-  } catch (error) {
-    return rejectWithValue(handleApiError(error));
-  }
-});
-
-export const magicLinkThunk = createAsyncThunk<
-  MagicLinksResponse,
-  void,
-  { rejectValue: ApiError }
->("auth/magicLink", async (_, { rejectWithValue }) => {
-  try {
-    const response = await axiosInstance.get<MagicLinksResponse>(
-      "/magic-links"
-    );
-    return response.data;
-  } catch (error) {
-    return rejectWithValue(handleApiError(error));
-  }
-});
-
-export const requestOtpThunk = createAsyncThunk<
-  OtpResponse,
-  OtpPayload,
-  { rejectValue: ApiError } // ThunkAPI config
->("auth/requestOtp", async (payload, { rejectWithValue }) => {
-  try {
-    const response = await axiosInstance.post<OtpResponse>(
-      "/otp/request",
-      payload
-    );
-    return response.data;
-  } catch (error) {
-    return rejectWithValue(handleApiError(error));
-  }
-});
-export const sendOtpThunk = createAsyncThunk<
-  OtpResponse,
-  { otp: string },
-  { rejectValue: ApiError }
->("auth/sendOtp", async (payload, { rejectWithValue }) => {
-  try {
-    const response = await axiosInstance.post<OtpResponse>(
-      "/otp/verify",
+    const response = await axiosInstance.post<LoginResponse>(
+      "/forgot-password",
       payload
     );
     return response.data;
@@ -186,12 +142,12 @@ export const sendOtpThunk = createAsyncThunk<
 });
 
 // Slice
-export const loginSlice = createSlice({
-  name: "auth/login",
+export const forgetPasswordSlice = createSlice({
+  name: "auth/forgot-password",
   initialState,
   reducers: {
-    setIsModalVisibleLogin: (state, action: PayloadAction<boolean>) => {
-      state.isModalVisibleLogin = action.payload;
+    setIsModalVisibleForget: (state, action: PayloadAction<boolean>) => {
+      state.isModalVisibleForget = action.payload;
     },
     setIsModalVisibleMagicLink: (
       state,
@@ -215,68 +171,19 @@ export const loginSlice = createSlice({
   extraReducers: (builder) => {
     // Magic Link thunk cases
     builder
-      .addCase(magicLinkThunk.pending, (state) => {
-        state.loading = true;
-        state.apiErrors = null;
-      })
-      .addCase(magicLinkThunk.fulfilled, (state, action) => {
-        state.loading = false;
-        state.magicLinks = action.payload.data;
-        state.apiErrors = null;
-      })
-      .addCase(magicLinkThunk.rejected, (state, action) => {
-        state.loading = false;
-        state.apiErrors = action.payload || {
-          message: "Failed to load magic links",
-          code: "MAGIC_LINKS_ERROR",
-        };
-      })
-
       // Login thunk cases
-      .addCase(loginThunk.pending, (state) => {
+      .addCase(forgetPasswordThunk.pending, (state) => {
         state.loading = true;
         state.apiErrors = null;
       })
-      .addCase(loginThunk.fulfilled, (state, action) => {
+      .addCase(forgetPasswordThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload.data;
         state.apiErrors = null;
         // Close modals on successful login
-        state.isModalVisibleLogin = false;
+        state.isModalVisibleForget = false;
       })
-      .addCase(loginThunk.rejected, (state, action) => {
-        state.loading = false;
-        state.apiErrors = action.payload || {
-          message: "Login failed",
-          code: "LOGIN_ERROR",
-        };
-      })
-
-      // Request Otp thunk cases
-      .addCase(requestOtpThunk.pending, (state) => {
-        state.loading = true;
-        state.apiErrors = null;
-      })
-      .addCase(requestOtpThunk.fulfilled, (state) => {
-        state.loading = false;
-        state.apiErrors = null;
-      })
-      .addCase(requestOtpThunk.rejected, (state, action) => {
-        state.loading = false;
-        state.apiErrors = action.payload || {
-          message: "Login failed",
-          code: "LOGIN_ERROR",
-        };
-      }) // Request Otp thunk cases
-      .addCase(sendOtpThunk.pending, (state) => {
-        state.loading = true;
-        state.apiErrors = null;
-      })
-      .addCase(sendOtpThunk.fulfilled, (state) => {
-        state.loading = false;
-        state.apiErrors = null;
-      })
-      .addCase(sendOtpThunk.rejected, (state, action) => {
+      .addCase(forgetPasswordThunk.rejected, (state, action) => {
         state.loading = false;
         state.apiErrors = action.payload || {
           message: "Login failed",
@@ -288,12 +195,12 @@ export const loginSlice = createSlice({
 
 // Action creators
 export const {
-  setIsModalVisibleLogin,
+  setIsModalVisibleForget,
   setIsModalVisibleMagicLink,
   setLoginStep,
   setRecipient,
   clearApiErrors,
   resetLoginState,
-} = loginSlice.actions;
+} = forgetPasswordSlice.actions;
 
-export default loginSlice.reducer;
+export default forgetPasswordSlice.reducer;

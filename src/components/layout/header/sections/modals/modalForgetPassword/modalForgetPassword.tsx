@@ -1,9 +1,8 @@
-import ButtonS1 from "@/components/tools/buttons/buttonS1";
 import { Modal } from "antd";
 import { useTranslations } from "next-intl";
 import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import LoginForm from "./forms/form";
+import ForgetPasswordForm from "./forms/form";
 import { setIsModalVisibleForget } from "@/store/slices/auth/forgetPasswordSlice";
 import { setIsModalVisibleLogin } from "@/store/slices/auth/loginSlice";
 import type { RootState } from "@/store/store";
@@ -47,7 +46,7 @@ const ModalForgetPassword: FC = () => {
             <h2>{t("Reset password")}</h2>
             <p>{t("Reset description")}</p>
           </div>
-          <LoginForm />
+          <ForgetPasswordForm />
         </div>
       </Modal>
     </>

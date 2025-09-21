@@ -130,7 +130,6 @@ const ModalLogin: React.FC = () => {
         onOk={handleCloseModal}
         onCancel={handleCloseModal}
         width={400}
-        maskClosable={false}
       >
         <div className="content">
           <header className="head">
@@ -143,7 +142,7 @@ const ModalLogin: React.FC = () => {
           <footer className="footer">
             {hasEnabledMagicLinks && (
               <div className="magicLinks">
-                <small>OR</small>
+                <small>{t("OR")}</small>
                 <ul className="flexCenter" role="list">
                   {magicLinkOptions.map(renderMagicLinkButton)}
                 </ul>

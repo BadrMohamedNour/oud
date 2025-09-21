@@ -1,3 +1,5 @@
+@use "@/styles/_variables" as *;
+
 .mobileFooter :global {
   display: flex;
   flex-direction: row;
@@ -24,8 +26,8 @@
     &.active,
     &:active {
       & * {
-        color: #f1b11d !important;
-        stroke: #f1b11d !important;
+        color: $c-t !important;
+        stroke: $c-t !important;
       }
     }
 

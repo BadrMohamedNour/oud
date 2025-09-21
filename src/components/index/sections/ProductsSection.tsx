@@ -27,6 +27,10 @@ const SWIPER_BREAKPOINTS = {
     slidesPerView: 4,
     spaceBetween: 18,
   },
+  1400: {
+    slidesPerView: 5,
+    spaceBetween: 18,
+  },
 } as const;
 
 const ProductsSection: React.FC<ProductsSectionProps> = memo(

@@ -1,32 +1,32 @@
-"use client"
+"use client";
 
-import { usePathname, useRouter } from "@/i18n/navigation"
-import { useLocale, useTranslations } from "next-intl"
-import { useTransition } from "react"
-import { Dropdown, type MenuProps } from "antd"
-import Image from "next/image"
+import { usePathname, useRouter } from "@/i18n/navigation";
+import { useLocale, useTranslations } from "next-intl";
+import { useTransition } from "react";
+import { Dropdown, type MenuProps } from "antd";
+import Image from "next/image";
 
-// Assets
-import langIcon from "../../../../../public/icons/langs/langIcon.svg"
-import en from "../../../../../public/icons/langs/en.png"
-import ar from "../../../../../public/icons/langs/ar.webp"
+// Icons
+import langIcon from "../../../../../public/icons/langs/langIcon.svg";
+import en from "../../../../../public/icons/langs/en.png";
+import ar from "../../../../../public/icons/langs/ar.webp";
 
 // Types
-import { Locale } from "next-intl"
+import { Locale } from "next-intl";
 
 const LangSwitcher = () => {
-  const router = useRouter()
-  const [isPending, startTransition] = useTransition()
-  const pathname = usePathname()
-  const locale = useLocale()
-  const t = useTranslations("Header")
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+  const pathname = usePathname();
+  const locale = useLocale();
+  const t = useTranslations("Header");
 
   const switchLanguage = (nextLocale: Locale) => {
     startTransition(() => {
-      router.replace(pathname, { locale: nextLocale })
-      router.refresh()
-    })
-  }
+      router.replace(pathname, { locale: nextLocale });
+      router.refresh();
+    });
+  };
 
   const menuItems: MenuProps["items"] = [
     {
@@ -45,7 +45,7 @@ const LangSwitcher = () => {
         </button>
       ),
     },
-  ]
+  ];
 
   return (
     <Dropdown
@@ -56,10 +56,10 @@ const LangSwitcher = () => {
       disabled={isPending}
     >
       <a onClick={(e) => e.preventDefault()} className="flexCenter">
-        <Image height={22} width={22} src={langIcon} alt={t("Language")} />
+        <Image height={18} width={18} src={langIcon} alt={t("Language")} />
       </a>
     </Dropdown>
-  )
-}
+  );
+};
 
-export default LangSwitcher
+export default LangSwitcher;

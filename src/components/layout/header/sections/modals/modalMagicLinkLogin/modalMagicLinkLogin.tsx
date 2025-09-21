@@ -29,7 +29,7 @@ const ModalMagicLinkLogin: React.FC = () => {
       width={400}
     >
       <div className="content">
-        {loginStep === 2 ? <RequestOtp /> : <SendOtp />}
+        {loginStep === 1 ? <RequestOtp /> : <SendOtp />}
       </div>
     </Modal>
   );

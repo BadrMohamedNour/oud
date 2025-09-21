@@ -8,7 +8,7 @@ const store = configureStore({
   reducer: {
     auth: authSlice,
     login: loginSlice,
-    // register: registerSlice,
+    register: registerSlice,
     forgetPassword: forgetPasswordSlice,
   },
   devTools: true,

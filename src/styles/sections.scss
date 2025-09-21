@@ -64,12 +64,52 @@
       }
     }
 
+    .ant-tabs-nav {
+      &::before {
+        border-bottom: none;
+      }
+
+      .ant-tabs-nav-list {
+        height: 45px;
+        width: 100%;
+        background: $c-s;
+        border-radius: 6px;
+        padding: 5px;
+        gap: 8px;
+
+        .ant-tabs-tab {
+          flex: 1;
+          justify-content: center;
+          color: #fff;
+          margin: 0;
+
+          &.ant-tabs-tab-active {
+            background: #fff;
+            border-radius: 4px;
+
+            .ant-tabs-tab-btn {
+              color: $c-s;
+            }
+          }
+
+          .ant-tabs-tab-btn:focus {
+            color: $c-s;
+          }
+        }
+      }
+
+      .ant-tabs-ink-bar {
+        display: none;
+      }
+    }
+
     form {
       .input {
         height: 36px;
         border-color: $c-s;
         border-radius: 8px;
         padding: 0px 8px;
+        box-shadow: none;
 
         .ant-placeholder {
           color: $c-f-s;
@@ -78,6 +118,56 @@
 
       .ant-form-item-explain-error {
         margin-bottom: 10px;
+      }
+
+      .phone-input {
+        direction: ltr;
+
+        .ant-input-wrapper {
+          height: 36px;
+          border: 1px solid $c-s;
+          border-radius: 8px;
+
+          .ant-input-group-addon,
+          .ant-input {
+            height: 100%;
+            border: none;
+            box-shadow: none;
+          }
+        }
+      }
+
+      .otp-input {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        direction: ltr;
+
+        input {
+          height: 40px;
+          width: 40px !important;
+          font-size: 16px;
+          font-weight: 600;
+
+          &:focus {
+            outline-color: $c-s;
+          }
+        }
+      }
+
+      .resend-otp {
+        text-align: center;
+        margin-bottom: 18px;
+
+        & > div {
+          color: gray !important;
+
+          button {
+            background: transparent !important;
+            color: $c-s !important;
+          }
+        }
       }
     }
 
@@ -101,7 +191,7 @@
             transition: all 0.2s ease-out;
 
             &:hover {
-              border-color: #f1b11d;
+              border-color: $c-t;
             }
 
             img {
@@ -110,6 +200,7 @@
           }
         }
       }
+
       button {
         display: block;
         width: fit-content;

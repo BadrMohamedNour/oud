@@ -5,23 +5,23 @@ import style from "./styles/header.module.scss";
 import { Badge } from "antd";
 import Link from "next/link";
 import MainDrawer from "@/components/layout/header/sections/mainDrawer";
-import ButtonS1 from "@/components/tools/buttons/buttonS1";
 import LangSwitcher from "./sections/langSwitcher";
 import CategoriesMenu from "./sections/categories";
 import ModalLogin from "./sections/modals/modalLogin/modalLogin";
+import ModalRegister from "./sections/modals/modalRegister/modalRegister";
 
 // Images & Icons
 import SvgLogo from "@/assets/svg/logo";
 import SvgUser from "@/assets/svg/user";
 import SvgLogoText from "@/assets/svg/logoText";
-import SvgShoppingBag from "@/assets/svg/shoppingBag";
-
-// Hooks
-import { cookies } from "next/headers";
 
 // Types
 import { Categories } from "@/types/categories";
 import { getCookie } from "@/utils/getCookies";
+
+// Icons
+import CartIcon from "../../../../public/icons/cart.svg";
+import Image from "next/image";
 
 const Header: React.FC<{ categories: Categories }> = async ({ categories }) => {
   const MToken = await getCookie("MToken");
@@ -50,13 +50,16 @@ const Header: React.FC<{ categories: Categories }> = async ({ categories }) => {
                 <SvgUser />
               </Link>
             ) : (
-              <ModalLogin />
+              <div className="flexCenter">
+                <ModalLogin />
+                <ModalRegister />
+              </div>
             )}
           </div>
 
           <Badge count={0}>
             <Link href="/cart" className="flexCenter">
-              <SvgShoppingBag />
+              <Image src={CartIcon} alt="Cart" />
             </Link>
           </Badge>
 

@@ -12,6 +12,7 @@ import { CartProvider } from "@/context/cart-context";
 
 // Wrrapers
 import Providers from "@/store/provider";
+import "@ant-design/v5-patch-for-react-19";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 
 // Styles

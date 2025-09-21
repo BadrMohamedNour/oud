@@ -1,0 +1,79 @@
+@use "@/styles/_mixins" as *;
+
+.indexComponent :global {
+  .banner-section {
+    height: 350px;
+    margin: 0 auto;
+    margin-bottom: 48px;
+
+    &.sidebar-section {
+      height: 800px;
+      width: 300px;
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .swiper {
+      height: 100%;
+      width: 100%;
+      border-radius: 6px;
+
+      .swiper-slide a img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .swiper-pagination {
+        position: absolute;
+        bottom: 10px;
+        text-align: center;
+        width: 100%;
+
+        .swiper-pagination-bullet {
+          width: 8px;
+          height: 8px;
+          background: #fff;
+          opacity: 0.4;
+          border-radius: 50%;
+          margin: 0 4px;
+          cursor: pointer;
+        }
+
+        .swiper-pagination-bullet-active {
+          opacity: 1;
+          background: #fff;
+        }
+      }
+    }
+
+    @include extraSmall {
+      height: 180px;
+    }
+  }
+
+  .withSidebar-section {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 48px;
+
+    .products-sections {
+      max-width: 100%;
+      overflow-x: hidden;
+
+      .products-section {
+        margin-bottom: 48px;
+
+        h2 {
+          margin-bottom: 24px;
+        }
+      }
+    }
+
+    @include large {
+      .sidebar-section {
+        display: none;
+      }
+    }
+  }
+}

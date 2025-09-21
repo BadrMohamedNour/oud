@@ -1,16 +1,17 @@
 //Components
+import ProductComponent from "@/components/product/product";
 
 // Types
-import { Metadata } from "next"
+import { Metadata } from "next";
 
-const ProductPage: React.FC<{ params: { slug: string } }> = async ({ params }) => {
-  const { slug } = params
+const ProductPage: React.FC<{ params: { slug: string } }> = async ({
+  params,
+}) => {
+  return <ProductComponent />;
+};
 
-  return <div>{slug}</div>
-}
-
-export default ProductPage
+export default ProductPage;
 
 export const metadata: Metadata = {
   title: "منتج",
-}
+};
