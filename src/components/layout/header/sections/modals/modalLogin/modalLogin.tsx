@@ -137,18 +137,18 @@ const ModalLogin: React.FC = () => {
             <p>{t("Login to your account to continue")}</p>
           </header>
 
+          {hasEnabledMagicLinks && (
+            <div className="magicLinks">
+              <ul className="flexCenter" role="list">
+                {magicLinkOptions.map(renderMagicLinkButton)}
+              </ul>
+            </div>
+          )}
+          <small>{t("OR")}</small>
+
           <LoginForm />
 
           <footer className="footer">
-            {hasEnabledMagicLinks && (
-              <div className="magicLinks">
-                <small>{t("OR")}</small>
-                <ul className="flexCenter" role="list">
-                  {magicLinkOptions.map(renderMagicLinkButton)}
-                </ul>
-              </div>
-            )}
-
             <ModalMagicLinkLogin />
             <ModalForgetPassword />
           </footer>

@@ -1,5 +1,5 @@
 import { Form, FormProps, Input } from "antd";
-import ButtonsS2 from "@/components/tools/buttons/buttonS2";
+import ButtonsS2 from "@/components/tools/buttons/buttonS1";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslations } from "next-intl";
 import { AppDispatch, RootState } from "@/store/store";
@@ -12,7 +12,9 @@ interface FieldType {
 const ForgetPasswordForm: React.FC = () => {
   const t = useTranslations("Forms");
 
-  const { apiErrors, loading } = useSelector((state: RootState) => state.login);
+  const { apiErrors, loading } = useSelector(
+    (state: RootState) => state.forgetPassword
+  );
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -43,7 +45,7 @@ const ForgetPasswordForm: React.FC = () => {
           { type: "email", message: t("invalid email") },
         ]}
         validateStatus={apiErrors?.errors?.email ? "error" : undefined}
-        help={apiErrors?.errors?.email}
+        help={apiErrors?.errors?.email?.toString()}
       >
         <Input className="input" placeholder={t("email")} />
       </Form.Item>

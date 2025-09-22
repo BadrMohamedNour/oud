@@ -1,7 +1,7 @@
 import { ConfigProvider, Form, Input } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslations } from "next-intl";
-import ButtonsS2 from "@/components/tools/buttons/buttonS2";
+import ButtonsS2 from "@/components/tools/buttons/buttonS1";
 import PhoneInput, { locale } from "antd-phone-input";
 import Cookies from "js-cookie";
 import {
@@ -37,13 +37,13 @@ const RequestOtp: React.FC = () => {
         requestOtpThunk({
           type: MagicLinkType === "phone" ? "sms" : MagicLinkType,
           recipient: areaCode.concat(phoneNumber),
-          country_code: `+${countryCode.toString()}`,
+          country_code: `${countryCode.toString()}`,
         })
       ).unwrap();
       dispatch(
         setRecipient({
           recipient: areaCode.concat(phoneNumber),
-          countryCode: `+${countryCode.toString()}`,
+          countryCode: `${countryCode.toString()}`,
         })
       );
       dispatch(setLoginStep(2));
@@ -56,7 +56,10 @@ const RequestOtp: React.FC = () => {
     <div>
       <div className="head">
         <h2>{th("Welcome Back")}</h2>
-        <p>{th("Login with code")}</p>
+        <div className="sub-head flexCenter">
+          <span>{th("Login with")}</span>
+          <span>{t(MagicLinkType || "email")}</span>
+        </div>
       </div>
       <ConfigProvider locale={locale(lang === "ar" ? "arEG" : "enGB")}>
         <Form<LoginFormValues>
@@ -83,8 +86,9 @@ const RequestOtp: React.FC = () => {
               <PhoneInput
                 enableSearch
                 className="phone-input"
-                preferredCountries={["sa", "eg", "kw", "bh", "om", "qa"]}
+                onlyCountries={["sa"]}
                 disableParentheses
+                disableDropdown
               />
             )}
           </Form.Item>

@@ -2,7 +2,8 @@
   "metadata": {},
   "Common": {
     "SAR": "SAR",
-    "Add to cart": "Add to cart"
+    "Add to cart": "Add to cart",
+    "Home": "Home"
   },
   "Header": {
     "Language": "Language",
@@ -11,7 +12,7 @@
     "All Categories": "All Categories",
     "Login": "Login",
     "Welcome Back": "Welcome back",
-    "Login with code": "Login with code",
+    "Login with": "Login with",
     "Login to your account to continue": "Sign in to your account to continue",
     "OR": "OR",
     "Register": "Register",
@@ -49,7 +50,16 @@
     "New arrival": "New arrival",
     "Most Featured": "Most Featured"
   },
-  "ContactUs": {},
+  "Product": {
+    "Home": "Home",
+    "Size": "Size",
+    "Add to cart": "Add to Cart",
+    "Quantity is not available": "Quantity is not available",
+    "Item Added  To Cart Successfully": "Item Added  To Cart Successfully",
+    "Description": "Description",
+    "Specification": "Specification",
+    "Similar Products": "Similar Products"
+  },
   "TermsConditions": {},
   "PrivacyPolicy": {},
   "Profile": {},

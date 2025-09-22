@@ -1,0 +1,52 @@
+@use "@/styles/_variables" as *;
+
+.productsSection :global {
+  margin-bottom: 48px;
+
+  h2 {
+    margin-bottom: 24px;
+  }
+
+  .productCard {
+    display: block;
+
+    .content {
+      background: #fff;
+      border-radius: 8px;
+      padding: 14px;
+      border: 1px solid transparent;
+      transition: all 0.1s ease-out;
+
+      &:hover {
+        border: 1px solid $c-t;
+      }
+
+      .img {
+        height: 150px;
+        width: 75px;
+        position: relative;
+        margin: 0 auto;
+        margin-bottom: 20px;
+      }
+
+      .details {
+        margin-bottom: 20px;
+
+        h4 {
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 27px;
+          color: #1a1c1d;
+          margin-bottom: 16px;
+        }
+
+        p {
+          font-size: 16px;
+          line-height: 1.5;
+          color: #1a1c1d;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

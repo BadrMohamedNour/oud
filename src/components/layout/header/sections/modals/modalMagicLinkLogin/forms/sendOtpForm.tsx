@@ -7,7 +7,7 @@ import Cookies from "js-cookie";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { AppDispatch, RootState } from "@/store/store";
-import ButtonsS2 from "@/components/tools/buttons/buttonS2";
+import ButtonsS2 from "@/components/tools/buttons/buttonS1";
 import {
   requestOtpThunk,
   sendOtpThunk,

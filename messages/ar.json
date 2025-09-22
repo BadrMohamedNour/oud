@@ -2,7 +2,8 @@
   "metadata": {},
   "Common": {
     "Add to cart": "إضافة للسلة",
-    "SAR": "ريال"
+    "SAR": "ريال",
+    "Home": "الرئيسية"
   },
   "Header": {
     "Language": "اللغة",
@@ -11,7 +12,7 @@
     "All Categories": "جميع الأقسام",
     "Login": "تسجيل الدخول",
     "Welcome Back": "مرحبًا بعودتك",
-    "Login with code": "تسجيل الدخول بكود",
+    "Login with": "تسجيل الدخول باستخدام",
     "Login to your account to continue": "قم بتسجيل الدخول إلى حسابك للمواصلة",
     "OR": "أو",
     "Forgot your password?": "هل نسيت كلمة المرور ؟",
@@ -49,7 +50,16 @@
     "New arrival": "وصل حديثا",
     "Most Featured": "الأكثر تميزًا"
   },
-  "ContactUs": {},
+  "Product": {
+    "Home": "الرئيسية",
+    "Size": "الحجم",
+    "Add to cart": "إضافة للسلة",
+    "Quantity is not available": "الكمية غير متوفرة",
+    "Item Added  To Cart Successfully": "تمت إضافة المنتج إلى السلة بنجاح",
+    "Description": "الوصف",
+    "Specification": "المواصفات",
+    "Similar Products": "منتجات مشابهة"
+  },
   "TermsConditions": {},
   "PrivacyPolicy": {},
   "Profile": {},

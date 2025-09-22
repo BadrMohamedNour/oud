@@ -60,14 +60,6 @@
     .products-sections {
       max-width: 100%;
       overflow-x: hidden;
-
-      .products-section {
-        margin-bottom: 48px;
-
-        h2 {
-          margin-bottom: 24px;
-        }
-      }
     }
 
     @include large {

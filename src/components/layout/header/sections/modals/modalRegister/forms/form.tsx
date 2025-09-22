@@ -2,7 +2,7 @@ import { ConfigProvider, Form, Input, message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslations } from "next-intl";
 import Cookies from "js-cookie";
-import ButtonsS2 from "@/components/tools/buttons/buttonS2";
+import ButtonsS2 from "@/components/tools/buttons/buttonS1";
 import PhoneInput, { locale } from "antd-phone-input";
 import { AppDispatch, RootState } from "@/store/store";
 import { registerThunk } from "@/store/slices/auth/registerSlice";
@@ -10,7 +10,7 @@ import { registerThunk } from "@/store/slices/auth/registerSlice";
 interface RegisterFormValues {
   name: string;
   email: string;
-  telephone: { areaCode: string; phoneNumber: string };
+  telephone: { areaCode: string; countryCode: number; phoneNumber: string };
   password: string;
 }
 
@@ -29,7 +29,7 @@ const RegisterForm: React.FC<{ handleCloseModal: () => void }> = ({
     dispatch(
       registerThunk({
         ...values,
-        telephone: `+${values.telephone.areaCode}${values.telephone.phoneNumber}`,
+        telephone: `${values.telephone.countryCode}${values.telephone.areaCode}${values.telephone.phoneNumber}`,
       })
     )
       .unwrap()
@@ -83,7 +83,8 @@ const RegisterForm: React.FC<{ handleCloseModal: () => void }> = ({
             enableSearch
             className="phone-input"
             disableParentheses
-            preferredCountries={["sa", "eg", "kw", "bh", "om", "qa"]}
+            disableDropdown
+            onlyCountries={["sa"]}
           />
         </Form.Item>
 

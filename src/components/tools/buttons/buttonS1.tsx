@@ -1,41 +1,35 @@
 // Components
-import Link from "next/link";
+import { Button } from "antd";
 
 // Styles
 import style from "./styles/buttons.module.scss";
-import { Button } from "antd";
 
 // Types
 type Props = {
-  type?: string;
-  path?: string;
-  styles?: string;
-  icon?: boolean;
   text: string | React.ReactNode;
-  onClick?: () => void;
+  loading?: boolean;
+  type?: "button" | "submit" | "reset" | undefined;
+  onClick?: (values?: {}) => void;
 };
 
-const ButtonS1: React.FC<Props> = ({
-  type = "link",
-  path = "/",
-  styles,
+const ButtonS2: React.FC<Props> = ({
+  type = "button",
   text,
-  icon,
+  loading,
   onClick,
 }) => {
   return (
-    <div className={`${style.buttons1} ${styles}`}>
-      {type === "btn" ? (
-        <Button onClick={onClick} className={`${icon ? "iconBtn" : ""}`}>
-          {text}
-        </Button>
-      ) : (
-        <Link href={path} className={`${icon ? "iconBtn" : ""}`}>
-          {text}
-        </Link>
-      )}
+    <div className={style.buttonS1}>
+      <Button
+        htmlType={type}
+        onClick={onClick}
+        loading={loading}
+        disabled={loading}
+      >
+        {text}
+      </Button>
     </div>
   );
 };
 
-export default ButtonS1;
+export default ButtonS2;

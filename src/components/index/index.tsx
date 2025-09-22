@@ -1,20 +1,23 @@
-"use client"
+"use client";
 
 // Compoents
-import BannerSection from "./sections/BannerSection"
-import ProductsSection from "./sections/ProductsSection"
+import BannerSection from "./sections/BannerSection";
+import ProductsSection from "../tools/products/ProductsSection";
 
 // Styles
-import styles from "./styles/index.module.scss"
+import styles from "./styles/index.module.scss";
 
 // Hooks
-import { useTranslations } from "next-intl"
+import { useTranslations } from "next-intl";
 
 // TYpes
-import { IndexComponentProps } from "@/types/home"
+import { IndexComponentProps } from "@/types/home";
 
-const IndexComponent: React.FC<IndexComponentProps> = ({ banners, products }) => {
-  const t = useTranslations("Home")
+const IndexComponent: React.FC<IndexComponentProps> = ({
+  banners,
+  products,
+}) => {
+  const t = useTranslations("Home");
 
   return (
     <main className={`${styles.indexComponent} page container`}>
@@ -24,17 +27,23 @@ const IndexComponent: React.FC<IndexComponentProps> = ({ banners, products }) =>
         <BannerSection style="sidebar-section" banners={banners?.hero} />
 
         <div className="products-sections">
-          <ProductsSection title={t("Best seller")} products={products?.most_seller} />
+          <ProductsSection
+            title={t("Best seller")}
+            products={products?.most_seller}
+          />
 
           <ProductsSection title={t("New arrival")} products={products?.new} />
 
-          <ProductsSection title={t("Most Featured")} products={products?.feature} />
+          <ProductsSection
+            title={t("Most Featured")}
+            products={products?.feature}
+          />
         </div>
       </div>
 
       <BannerSection banners={banners?.bottom} />
     </main>
-  )
-}
+  );
+};
 
-export default IndexComponent
+export default IndexComponent;

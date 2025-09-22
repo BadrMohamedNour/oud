@@ -2,7 +2,7 @@ import { ConfigProvider, Form, Input, Tabs } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslations } from "next-intl";
 import Cookies from "js-cookie";
-import ButtonsS2 from "@/components/tools/buttons/buttonS2";
+import ButtonsS2 from "@/components/tools/buttons/buttonS1";
 import PhoneInput, { locale } from "antd-phone-input";
 import {
   clearApiErrors,
@@ -16,8 +16,9 @@ import { useState } from "react";
 interface LoginFormValues {
   email?: string;
   identifier?: {
-    areaCode: number;
-    phoneNumber: number;
+    areaCode: string;
+    countryCode: number;
+    phoneNumber: string;
   };
   password: string;
 }
@@ -75,7 +76,7 @@ const LoginForm: React.FC = () => {
             enableSearch
             className="phone-input"
             disableParentheses
-            preferredCountries={["sa", "eg", "kw", "bh", "om", "qa"]}
+            onlyCountries={["sa"]}
           />
         </Form.Item>
       ),
@@ -84,14 +85,13 @@ const LoginForm: React.FC = () => {
 
   const handleSubmit = async (values: LoginFormValues) => {
     let identifierValue: string;
-
     // Determine identifier based on active tab
     if (activeTab === "1") {
       identifierValue = values.email!;
     } else {
-      identifierValue = `+${values.identifier!.areaCode}${
-        values.identifier!.phoneNumber
-      }`;
+      identifierValue = `${values.identifier!.countryCode}${
+        values.identifier!.areaCode
+      }${values.identifier!.phoneNumber}`;
     }
 
     dispatch(
@@ -149,6 +149,7 @@ const LoginForm: React.FC = () => {
           items={items}
           onChange={changeTabHandler}
           destroyOnHidden
+          animated
         />
 
         <Form.Item<LoginFormValues>

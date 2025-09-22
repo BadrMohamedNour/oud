@@ -1,78 +1,243 @@
 @use "@/styles/_mixins" as *;
+@import "@/styles/_variables";
 
-.indexComponent :global {
-  .banner-section {
-    height: 350px;
-    margin: 0 auto;
-    margin-bottom: 48px;
+.productComponent :global {
+  .productSection {
+    background: #fff;
+    padding: 32px;
 
-    &.sidebar-section {
-      height: 800px;
-      width: 300px;
-      margin: 0;
-      flex-shrink: 0;
-    }
+    .productSliderWrapper {
+      display: flex;
+      gap: 20px;
 
-    .swiper {
-      height: 100%;
-      width: 100%;
-      border-radius: 6px;
+      .productSlider {
+        height: 400px;
+        flex: 1;
 
-      .swiper-slide a img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+        .swiper-slide {
+          width: auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
 
-      .swiper-pagination {
-        position: absolute;
-        bottom: 10px;
-        text-align: center;
-        width: 100%;
-
-        .swiper-pagination-bullet {
-          width: 8px;
-          height: 8px;
-          background: #fff;
-          opacity: 0.4;
-          border-radius: 50%;
-          margin: 0 4px;
-          cursor: pointer;
+          .img {
+            height: 100%;
+            width: 100%;
+            position: relative;
+          }
         }
 
-        .swiper-pagination-bullet-active {
-          opacity: 1;
-          background: #fff;
+        .swiper-button-disabled {
+          background: transparent;
+          border: none;
+        }
+      }
+
+      .productSliderThumbs {
+        width: 80px;
+
+        .swiper-wrapper {
+          flex-direction: column;
+
+          .swiper-slide {
+            height: 80px;
+            width: 100% !important;
+            border: 1px solid $c-t;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 0 !important;
+
+            img {
+              padding: 4px;
+            }
+
+            &:not(:last-of-type) {
+              margin-bottom: 10px;
+            }
+          }
+
+          .swiper-slide-thumb-active {
+            border-color: $c-s;
+          }
+        }
+      }
+
+      @media (max-width: 800px) {
+        flex-direction: column;
+
+        .productSlider {
+          height: 200px;
+
+          .swiper-slide {
+            padding: 10px 0px;
+          }
+        }
+
+        .productSliderThumbs {
+          width: 100%;
+          padding: 10px 0;
+
+          .swiper-wrapper {
+            flex-direction: row;
+            gap: 4px;
+            .swiper-slide {
+              width: 24% !important;
+              margin-bottom: 0 !important;
+            }
+          }
         }
       }
     }
 
-    @include extraSmall {
-      height: 180px;
+    .productData {
+      max-width: 450px;
+
+      .divider {
+        height: 1px;
+        background: #e7eaee;
+        margin: 30px 0px;
+      }
+
+      h2 {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 1.5;
+        color: #484e51;
+        margin-bottom: 10px;
+      }
+
+      h1 {
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 30px;
+      }
+
+      .price {
+        margin-bottom: 15px;
+
+        .old-price {
+          gap: 2px;
+          font-size: 18px;
+          color: #b0b0b0;
+          margin-bottom: 8px;
+
+          span {
+            text-decoration: line-through;
+          }
+        }
+
+        .current-price {
+          gap: 2px;
+          font-size: 22px;
+          font-weight: 600;
+          letter-spacing: 0.55px;
+          color: $c-s;
+        }
+      }
+
+      .size {
+        h3 {
+          font-weight: 500;
+          color: $c-f-s;
+        }
+
+        .sizes {
+          gap: 8px;
+
+          label {
+            width: fit-content;
+            height: auto;
+            border: 1px solid #e7eaee;
+            padding: 8px;
+            border-radius: 4px;
+            color: #1c2025;
+            text-align: start;
+            line-height: 1.5;
+          }
+        }
+      }
+
+      .AddToCartSection {
+        gap: 24px;
+
+        .quantityBtns {
+          height: 48px;
+          border: 1px solid #e7eaee;
+          border-radius: 8px;
+          padding: 8px 6px;
+          gap: 4px;
+          transition: all 0.1s ease-out;
+
+          button {
+            height: 32px;
+            width: 32px;
+            box-shadow: none;
+            padding: 0px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            background: #f6f7f9;
+            color: #1c2025 !important;
+
+            &:hover {
+              border-color: $c-s;
+            }
+          }
+
+          .quantity {
+            width: 64px;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.375;
+            color: #1c2025;
+            border: none;
+            border-radius: 8px;
+            outline: 0;
+            text-align: center;
+          }
+
+          &:hover {
+            border-color: $c-t;
+          }
+        }
+
+        & > div:last-child {
+          align-self: stretch;
+          flex: 1;
+
+          button {
+            height: 100%;
+          }
+        }
+      }
     }
   }
 
-  .withSidebar-section {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 48px;
+  .productDescriptionSpicificationSection {
+    background: #fff;
+    padding: 16px;
+    margin: 24px 0px;
 
-    .products-sections {
-      max-width: 100%;
-      overflow-x: hidden;
+    .tabs .ant-tabs-nav {
+      &::before {
+        display: none;
+      }
 
-      .products-section {
-        margin-bottom: 48px;
+      .ant-tabs-tab {
+        .ant-tabs-tab-btn {
+          padding: 0px 8px;
 
-        h2 {
-          margin-bottom: 24px;
+          &:hover {
+            color: $c-t;
+          }
+        }
+
+        &.ant-tabs-tab-active .ant-tabs-tab-btn {
+          color: $c-s;
         }
       }
-    }
 
-    @include large {
-      .sidebar-section {
-        display: none;
+      .ant-tabs-ink-bar {
+        background: $c-s;
       }
     }
   }

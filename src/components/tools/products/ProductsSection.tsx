@@ -1,9 +1,13 @@
+"use client";
+
+// Style
 import { memo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import ProductCard from "@/components/tools/productCard/productCard";
+import ProductCard from "./productCard/productCard";
 import { Product } from "@/types/home";
 import { Autoplay } from "swiper/modules";
 import { Skeleton } from "antd";
+import style from "./styles/productsSection.module.scss";
 
 interface ProductsSectionProps {
   title: string;
@@ -40,7 +44,7 @@ const ProductsSection: React.FC<ProductsSectionProps> = memo(
     }
 
     return (
-      <section className="products-section">
+      <section className={style.productsSection}>
         {!products ? (
           <Skeleton.Node active rootClassName="skeleton" />
         ) : (

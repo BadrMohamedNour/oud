@@ -186,8 +186,8 @@ export const forgetPasswordSlice = createSlice({
       .addCase(forgetPasswordThunk.rejected, (state, action) => {
         state.loading = false;
         state.apiErrors = action.payload || {
-          message: "Login failed",
-          code: "LOGIN_ERROR",
+          message: "Forget Password failed",
+          code: "FORGETPASSWORD_ERROR",
         };
       });
   },
