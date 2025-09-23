@@ -48,7 +48,7 @@ const SendOtp: React.FC = () => {
           sameSite: "strict" as const,
         };
         Cookies.set("MToken", response.data.token, cookieOptions);
-        Cookies.set("MCartToken", response.data.cart_token, cookieOptions);
+        Cookies.set("cart_token", response.data.cart_token, cookieOptions);
         dispatch(setIsModalVisibleMagicLink({ status: false }));
         router.refresh();
       })

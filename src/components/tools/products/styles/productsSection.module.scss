@@ -40,11 +40,21 @@
           margin-bottom: 16px;
         }
 
-        p {
-          font-size: 16px;
-          line-height: 1.5;
-          color: #1a1c1d;
-          font-weight: 600;
+        .price {
+          justify-content: start;
+          gap: 4px;
+
+          span {
+            margin-top: 5px;
+            font-size: 16px;
+            line-height: 1;
+            color: $c-s;
+            font-weight: 600;
+          }
+
+          img {
+            display: flex;
+          }
         }
       }
     }

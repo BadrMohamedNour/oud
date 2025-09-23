@@ -11,14 +11,12 @@ const ProductDescriptionSpicificationSection: React.FC<{
     {
       key: "1",
       label: t("Description"),
-      children: (
-        <div dangerouslySetInnerHTML={{ __html: product.description }}></div>
-      ),
-    },
-    {
-      key: "2",
-      label: t("Specification"),
-      children: <div></div>,
+      children:
+        product.description === "" ? (
+          <div className="noDescription flexCenter">{t("No description")}</div>
+        ) : (
+          <div dangerouslySetInnerHTML={{ __html: product.description }}></div>
+        ),
     },
   ];
 

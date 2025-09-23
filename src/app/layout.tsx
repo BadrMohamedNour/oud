@@ -1,7 +1,3 @@
-// Actions
-import { getAppData } from "@/apiCalls/appApiCall";
-import { getCategories } from "@/apiCalls/categoriesApiCall";
-
 // Fonts
 import { Tajawal } from "next/font/google";
 
@@ -30,12 +26,9 @@ const tajawal = Tajawal({
 export default async function RootLayout({
   children,
 }: Readonly<RootLayoutProps>) {
-  const [messages] = await Promise.all([
-    getMessages(),
-    getAppData(),
-    getCategories(),
-  ]);
+  const messages = await getMessages();
   const locale = await getLocale();
+
   return (
     <html lang={locale}>
       <body className={tajawal.className}>

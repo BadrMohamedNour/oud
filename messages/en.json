@@ -58,9 +58,15 @@
     "Item Added  To Cart Successfully": "Item Added  To Cart Successfully",
     "Description": "Description",
     "Specification": "Specification",
-    "Similar Products": "Similar Products"
+    "Similar Products": "Similar Products",
+    "No images available": "No images available",
+    "No description": "No description",
+    "SAR": "SAR"
   },
-  "TermsConditions": {},
+  "Cart": {
+    "shopping cart": "Shopping cart",
+    "Product": "Product"
+  },
   "PrivacyPolicy": {},
   "Profile": {},
   "NotFound": {

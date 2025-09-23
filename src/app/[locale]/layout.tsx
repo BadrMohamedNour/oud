@@ -5,10 +5,8 @@ import MobileFooter from "@/components/layout/mobile-footer/mobile-footer";
 
 // Actions
 import { getAppData } from "@/apiCalls/appApiCall";
+import { getAppSeo } from "@/apiCalls/seoApiCall ";
 import { getCategories } from "@/apiCalls/categoriesApiCall";
-
-// Context
-import { CartProvider } from "@/context/cart-context";
 
 // Wrrapers
 import Providers from "@/store/provider";
@@ -20,7 +18,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "@/styles/globals.scss";
 import "@/styles/sections.scss";
-import { getAppSeo } from "@/apiCalls/seoApiCall ";
+
+// Hooks
 
 // Types
 interface RootLayoutProps {
@@ -37,16 +36,15 @@ export default async function LocaleLayout({
     getAppData(),
     getCategories(),
   ]);
+
   return (
-    <Providers>
-      <CartProvider>
-        <AntdRegistry>
-          <Header categories={categories} />
-          {children}
-          <Footer appData={appData} />
-          <MobileFooter />
-        </AntdRegistry>
-      </CartProvider>
+    <Providers cart_token={appData.cart_token}>
+      <AntdRegistry>
+        <Header categories={categories} />
+        {children}
+        <Footer appData={appData} />
+        <MobileFooter />
+      </AntdRegistry>
     </Providers>
   );
 }

@@ -1,0 +1,18 @@
+@use "@/styles/_variables" as *;
+@use "@/styles/_mixins" as *;
+
+.cartComponent :global {
+  .page-header {
+    gap: 5px;
+    margin-bottom: 48px;
+
+    h1 {
+      font-weight: 500;
+    }
+
+    .count {
+      gap: 2px;
+      color: $c-f-s;
+    }
+  }
+}

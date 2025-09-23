@@ -4,7 +4,7 @@ $medium-width: 1000px;
 $large-width: 1200px;
 
 @mixin extraSmall {
-  @media (max-width: #{$small-width - 1px}) {
+  @media (max-width: #{$extraSmall-width - 1px}) {
     @content;
   }
 }

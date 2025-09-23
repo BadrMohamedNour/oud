@@ -58,9 +58,12 @@
     "Item Added  To Cart Successfully": "تمت إضافة المنتج إلى السلة بنجاح",
     "Description": "الوصف",
     "Specification": "المواصفات",
-    "Similar Products": "منتجات مشابهة"
+    "Similar Products": "منتجات مشابهة",
+    "No images available": "لا توجد صور متاحة",
+    "No description": "لا يوجد وصف",
+    "SAR": "ريال"
   },
-  "TermsConditions": {},
+  "Cart": { "shopping cart": "عربة التسوق", "Product": "منتج" },
   "PrivacyPolicy": {},
   "Profile": {},
   "NotFound": {

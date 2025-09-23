@@ -10,6 +10,7 @@ import "swiper/css/thumbs";
 
 // Types
 import { Product } from "@/types/product";
+import { useTranslations } from "next-intl";
 
 interface ProductSliderProps {
   product: Product;
@@ -17,6 +18,8 @@ interface ProductSliderProps {
 
 // Component
 export const ProductSlider: React.FC<ProductSliderProps> = ({ product }) => {
+  const t = useTranslations("Product");
+
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
   // Memoize gallery array to prevent unnecessary re-renders
@@ -26,12 +29,11 @@ export const ProductSlider: React.FC<ProductSliderProps> = ({ product }) => {
   const handleThumbsSwiperInit = useCallback((swiper: SwiperType) => {
     setThumbsSwiper(swiper);
   }, []);
-
   // Early return if no gallery images
   if (gallery.length === 0) {
     return (
-      <div className="productSliderWrapper">
-        <div className="no-images">No images available</div>
+      <div className="productSliderWrapper flexCenter">
+        <div className="no-images">{t("No images available")}</div>
       </div>
     );
   }

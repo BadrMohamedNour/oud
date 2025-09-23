@@ -116,7 +116,7 @@ const LoginForm: React.FC = () => {
           JSON.stringify(response.data.customer),
           cookieOptions
         );
-        Cookies.set("MCartToken", response.data.cart_token, cookieOptions);
+        Cookies.set("cart_token", response.data.cart_token, cookieOptions);
         form.resetFields();
         dispatch(setIsModalVisibleLogin(false));
         router.refresh();

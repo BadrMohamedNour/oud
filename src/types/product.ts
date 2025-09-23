@@ -1,3 +1,14 @@
+export type PackagingUnit = {
+  id: number;
+  name: string;
+  product_id: number;
+  price: string;
+  on_sale: boolean;
+  active_sale_price: string;
+  quantity: number;
+  image: string | null;
+};
+
 export interface Product {
   id: number;
   name: string;
@@ -27,7 +38,7 @@ export interface Product {
   };
   tags: string[];
   gallery: string[];
-  packaging_units: string[];
+  packaging_units: PackagingUnit[];
   meta_title: string;
   meta_description: string | null;
   meta_keywords: string | null;

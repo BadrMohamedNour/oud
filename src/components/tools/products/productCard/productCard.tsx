@@ -6,6 +6,9 @@ import Link from "next/link";
 import { Product } from "@/types/home";
 import { useTranslations } from "next-intl";
 
+// Icons
+import currency from "../../../../../public/icons/currency.svg";
+
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const t = useTranslations("Common");
 
@@ -17,9 +20,10 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
         </div>
         <div className="details">
           <h4>{product.name}</h4>
-          <p>
-            {product.price} {t("SAR")}
-          </p>
+          <div className="price flexCenter">
+            <span>{product.price}</span>
+            <Image src={currency} alt={t("SAR")} height={14} width={14} />
+          </div>
         </div>
       </div>
     </Link>

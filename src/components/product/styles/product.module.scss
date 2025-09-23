@@ -7,6 +7,7 @@
     padding: 32px;
 
     .productSliderWrapper {
+      min-height: 100%;
       display: flex;
       gap: 20px;
 
@@ -62,27 +63,26 @@
         }
       }
 
-      @media (max-width: 800px) {
-        flex-direction: column;
+      @media (max-width: 620px) {
+        flex-direction: column-reverse;
+        gap: 32px;
 
         .productSlider {
-          height: 200px;
-
-          .swiper-slide {
-            padding: 10px 0px;
-          }
+          height: 300px;
+          width: 100%;
+          flex: auto;
         }
 
         .productSliderThumbs {
           width: 100%;
-          padding: 10px 0;
 
           .swiper-wrapper {
             flex-direction: row;
-            gap: 4px;
+            gap: 10px;
+
             .swiper-slide {
-              width: 24% !important;
-              margin-bottom: 0 !important;
+              width: 80px !important;
+              margin-bottom: 0;
             }
           }
         }
@@ -139,6 +139,7 @@
         h3 {
           font-weight: 500;
           color: $c-f-s;
+          margin-bottom: 10px;
         }
 
         .sizes {
@@ -147,12 +148,23 @@
           label {
             width: fit-content;
             height: auto;
+            flex: none !important;
             border: 1px solid #e7eaee;
             padding: 8px;
             border-radius: 4px;
             color: #1c2025;
             text-align: start;
             line-height: 1.5;
+
+            .size-price {
+              gap: 2px;
+              justify-content: start;
+              color: $c-f-p;
+            }
+
+            &.ant-radio-button-wrapper-checked {
+              border-color: $c-s;
+            }
           }
         }
       }
@@ -209,6 +221,28 @@
           }
         }
       }
+
+      @include small {
+        max-width: 100%;
+
+        .AddToCartSection div:not(.quantityBtns) button {
+          max-width: 300px;
+        }
+      }
+
+      @include extraSmall {
+        .AddToCartSection {
+          flex-direction: column;
+
+          & > div:last-child button {
+            height: 48px;
+          }
+        }
+      }
+    }
+
+    @include extraSmall {
+      padding: 16px;
     }
   }
 
@@ -239,6 +273,12 @@
       .ant-tabs-ink-bar {
         background: $c-s;
       }
+    }
+
+    .noDescription {
+      font-size: 16px;
+      font-weight: 500;
+      padding: 16px;
     }
   }
 }
