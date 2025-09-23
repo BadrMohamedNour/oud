@@ -65,7 +65,16 @@
   },
   "Cart": {
     "shopping cart": "Shopping cart",
-    "Product": "Product"
+    "Product": "Product",
+    "Total price": "Total price",
+    "SAR": "SAR",
+    "Order Summary": "Order Summary",
+    "Type your promo here": "Type your promo here",
+    "Apply": "Apply",
+    "Subtotal": "Subtotal",
+    "Shipping Fee": "Shipping Fee",
+    "Total": "Total",
+    "Checkout": "Checkout"
   },
   "PrivacyPolicy": {},
   "Profile": {},

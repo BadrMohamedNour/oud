@@ -1,22 +1,24 @@
 //Components
-// import { getCart } from "@/apiCalls/cartApiCall";
-import CartComponent from "@/components/cart/cart";
+import CartComponent from "@/components/cart/cart"
 
 // Hooks
-// import { getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server"
 
-const CartPage: React.FC = () => {
-  // const cart = await getCart();
+// Actions
+import { getCart } from "@/apiCalls/cartApiCall"
 
-  return <CartComponent cart={{}} />;
-};
+const CartPage: React.FC = async (): Promise<JSX.Element> => {
+  const cart = await getCart()
 
-export default CartPage;
+  return <CartComponent cart={cart} />
+}
 
-// export const generateMetadata = async () => {
-//   const t = await getTranslations("Cart");
+export default CartPage
 
-//   return {
-//     title: t("shopping cart"),
-//   };
-// };
+export const generateMetadata = async () => {
+  const t = await getTranslations("Cart")
+
+  return {
+    title: t("shopping cart"),
+  }
+}

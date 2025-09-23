@@ -63,7 +63,20 @@
     "No description": "لا يوجد وصف",
     "SAR": "ريال"
   },
-  "Cart": { "shopping cart": "عربة التسوق", "Product": "منتج" },
+  "Cart": {
+    "shopping cart": "عربة التسوق",
+    "Product": "منتج",
+    "Quantity": "الكمية",
+    "Total price": "السعر الإجمالي",
+    "SAR": "ريال",
+    "Order Summary": "ملخص الطلب",
+    "Type your promo here": "ادخل رمز القسيمة",
+    "Apply": "تطبيق",
+    "Subtotal": "المجموع الفرعي",
+    "Shipping Fee": "رسوم الشحن",
+    "Total": "المجموع",
+    "Checkout": "الدفع"
+  },
   "PrivacyPolicy": {},
   "Profile": {},
   "NotFound": {
